@@ -1,13 +1,17 @@
 class state():
-	def __init__(self, canvas = [], cost = 0, command_cost = 0, parent = None, edge = None):
+	def __init__(self, canvas = [], cost = 0, command_cost = 0, parent = None, edge = None, hash = None):
 		self.canvas = canvas
 		self.cost = cost
 		self.command_cost = command_cost
 		self.parent = parent
 		self.edge = edge
+		self.hash = self.hash_aux() if hash == None else hash
 	
-	def __hash__(self):
+	def hash_aux(self):
 		return hash(tuple(map(tuple, self.canvas)))
+
+	def __hash__(self):
+		return self.hash
 
 	def __lt__(self, obj):
 		"""self < obj."""
