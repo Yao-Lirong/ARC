@@ -313,9 +313,16 @@ We can adopt a canonical order to prune symmetry.
 - symmetry: Imagine two non-overlapping objects A and B. Drawing A first then B is equivalent to drawing B first then A. Therefore, we say these two cases are symmetric.
 - Canonical Order: Some order to ensure that our program will always do first A then B, or first B then A. (Just another way to say pruning, basically if we eventually choose to do first A then B, B-A cannot appear in our search)
 
+This method is also mentioned in Kaggle 1st solution that he made a DAG of these programs. 
+
 We can also explicitly tell our search to prefer non-overlapping (non occlusion) solutions, because in original ARC problem, occluded problems are rare. (I don't know whether this is true though, can do this later)
 
 #### Web Interface 
 
 For our web interface, we not only want it to show how our search parse objects, we also want to give users a way to annotate objects using that interface. That is, the interface should not only present the predicted programs, but should also allow users to draw desired solution. Specifically, when the user draws solutions, our program should record start x, start y, x length, y length, object type, and the content if it is a bitmap (basically everything in our `p_*.py` file and `obj_a_log.py` file now) So it should be like object detection in CV. 
 
+### 2022-06-05 Personal Note on How Kaggle 1st Works 
+
+He hand coded 100 or so transformation function by looking at 100 tasks. Then, for a specific test task, he does a search inside this DSL space on the training data to search which combination of functions manages to transform the input to output. Then he applies the predicted program to the test input. 
+
+He augmented his samples through diagonally flipping. 
