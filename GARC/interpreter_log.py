@@ -11,12 +11,12 @@ from obj_a_log import *
 from scipy.special import loggamma, logsumexp
 
 RUNTIME = 600.0
-WANTED_RESULTS_NUM = 10000
-TOPRINT_RESULTS_NUM = 1000
+WANTED_RESULTS_NUM = 5000
+TOPRINT_RESULTS_NUM = 10
 assert TOPRINT_RESULTS_NUM <= WANTED_RESULTS_NUM
 PRINT_FREQUENCY = 10000000
 SERVER = True
-ENABLE_PROFILER = True
+ENABLE_PROFILER = False
 ENABLE_LEGACY = False
 # parent_dir = os.path.dirname(os.getcwd())
 arc_data_dir = "/home/ly373/ARC/ARCdata/data/training/" if SERVER \
@@ -416,6 +416,8 @@ class Astar():
 
 				elif next_hash not in vis: q.put(next_state)
 
+		return final_states, desired_cost
+
 	def print_path_state(self, final_state, edge_only=False):
 		xlen = x_length(final_state.canvas)
 		ylen = y_length(final_state.canvas)
@@ -477,7 +479,8 @@ class Astar():
 			self.print_path_state(sorted_prediction[i], True)
 			print("---------%d---------" %(i))
 		
-		return max(solution_cost - sorted_prediction[0].command_cost, 0)
+		return (solution_rank, 
+				solution_cost - sorted_prediction[0].command_cost)
 
 
 
@@ -506,7 +509,7 @@ if __name__ == "__main__":
 
 	# search_one(TASKNAME, TASKNUM, ISINPUT)
 
-	TASKNAME, TASKNUM, ISINPUT = "05f2a901", 1, True
+	TASKNAME, TASKNUM, ISINPUT = "0a938d79", 0, True
 	
 	alpha, theta = 0.0009118819655545162, [14.0, 15.0, 15.0, 11.0]
 	theta = list(np.multiply(-1, theta))
