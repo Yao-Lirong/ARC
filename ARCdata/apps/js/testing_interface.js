@@ -1,3 +1,15 @@
+/*
+    Important things to note: 
+    
+    - The edition grid is the physical grid that the user sees on the webpage.
+    The data grid (the grid listed under Internal state) has the grid objects and those are what is being
+    changed internally
+
+    - jqGrid is the edition grid
+
+
+*/
+
 
 // Internal state.
 var CURRENT_INPUT_GRID = new Grid(3, 3);
@@ -12,9 +24,11 @@ var EDITION_GRID_WIDTH = 500;
 var MAX_CELL_SIZE = 100;
 
 // Set this value to which input you want to start from
-var index = 20;
+var index = 1;
 
-
+/**
+ * Restarts the output grid
+ */
 function resetTask() {
     CURRENT_INPUT_GRID = new Grid(3, 3);
     TEST_PAIRS = new Array();
@@ -23,6 +37,11 @@ function resetTask() {
     resetOutputGrid();
 }
 
+/**
+ * Refresh the 'physical' grid with the data grid
+ * @param {*} jqGrid The edition grid (the grid that the users see)
+ * @param {*} dataGrid The same output grid but represented as a tuple
+ */
 function refreshEditionGrid(jqGrid, dataGrid) {
     fillJqGridWithData(jqGrid, dataGrid);
     setUpEditionGridListeners(jqGrid);
@@ -30,25 +49,39 @@ function refreshEditionGrid(jqGrid, dataGrid) {
     initializeSelectable();
 }
 
+/**
+ * Syncs the current physical grid to the data grid (CURRENT_OUTPUT_GRID)
+ */
 function syncFromEditionGridToDataGrid() {
     copyJqGridToDataGrid($('#output_grid .edition_grid'), CURRENT_OUTPUT_GRID);
 }
 
+/**
+ * Syncs the data grad (CURRENT_OUTPUT_GRID) to the 'physical' grid
+ */
 function syncFromDataGridToEditionGrid() {
     refreshEditionGrid($('#output_grid .edition_grid'), CURRENT_OUTPUT_GRID);
 }
 
+/**
+ * Obtains the symbol that was selected by the user
+ * @returns Symbole (color) that is selected
+ */
 function getSelectedSymbol() {
     selected = $('#symbol_picker .selected-symbol-preview')[0];
     return $(selected).attr('symbol');
 }
 
+/**
+ * Sets the edition grid listeners up. Sets it up for the floodfill and edit buttons
+ * @param {*} jqGrid The edition grid
+ */
 function setUpEditionGridListeners(jqGrid) {
     jqGrid.find('.cell').click(function(event) {
-        cell = $(event.target);
-        symbol = getSelectedSymbol();
+        cell = $(event.target);                                 //obtains the cell that user clicked on
+        symbol = getSelectedSymbol();                           //obtains the color that is currently selected
 
-        mode = $('input[name=tool_switching]:checked').val();
+        mode = $('input[name=tool_switching]:checked').val();   //obtains the mode that the user selected from the input
         if (mode == 'floodfill') {
             // If floodfill: fill all connected cells.
             syncFromEditionGridToDataGrid();
@@ -63,6 +96,9 @@ function setUpEditionGridListeners(jqGrid) {
     });
 }
 
+/**
+ * Resizes the edition grid (saves anything that was still on the canvas during resizing)ß
+ */
 function resizeOutputGrid() {
     size = $('#output_grid_size').val();
     size = parseSizeTuple(size);
@@ -76,13 +112,19 @@ function resizeOutputGrid() {
     refreshEditionGrid(jqGrid, CURRENT_OUTPUT_GRID);
 }
 
+/**
+ * Resets the output grid to a certain size
+ */
 function resetOutputGrid() {
     syncFromEditionGridToDataGrid();
-    CURRENT_OUTPUT_GRID = new Grid(3, 3);
+    CURRENT_OUTPUT_GRID = new Grid(4, 4);
     syncFromDataGridToEditionGrid();
     resizeOutputGrid();
 }
 
+/**
+ * Copies what was from the input grid to the current output grid
+ */
 function copyFromInput() {
     syncFromEditionGridToDataGrid();
     CURRENT_OUTPUT_GRID = convertSerializedGridToGridObject(CURRENT_INPUT_GRID.grid);
@@ -90,18 +132,26 @@ function copyFromInput() {
     $('#output_grid_size').val(CURRENT_OUTPUT_GRID.height + 'x' + CURRENT_OUTPUT_GRID.width);
 }
 
+/**
+ * Creates the edition grids (the physical, viewable input/output grids) in the Task Demonstration box
+ * @param {*} pairId        The ID number of the pair
+ * @param {*} inputGrid     The inputGrid (as represented as a data grid)
+ * @param {*} outputGrid    The outputGrid (as represented as a data grid)
+ */
 function fillPairPreview(pairId, inputGrid, outputGrid) {
     var pairSlot = $('#pair_preview_' + pairId);
     if (!pairSlot.length) {
-        // Create HTML for pair.
+        // Create HTML for pair. (creates them for the task demonstration box)
         pairSlot = $('<div id="pair_preview_' + pairId + '" class="pair_preview" index="' + pairId + '"></div>');
         pairSlot.appendTo('#task_preview');
     }
+    // Creates the edition grid view for the input section of the Task Demonstration box if not already there
     var jqInputGrid = pairSlot.find('.input_preview');
     if (!jqInputGrid.length) {
         jqInputGrid = $('<div class="input_preview"></div>');
         jqInputGrid.appendTo(pairSlot);
     }
+    // Creates the edition grid view for the output section of the Task Demonstration box if it is not already there
     var jqOutputGrid = pairSlot.find('.output_preview');
     if (!jqOutputGrid.length) {
         jqOutputGrid = $('<div class="output_preview"></div>');
@@ -114,12 +164,18 @@ function fillPairPreview(pairId, inputGrid, outputGrid) {
     fitCellsToContainer(jqOutputGrid, outputGrid.height, outputGrid.width, 200, 200);
 }
 
+/**
+ * Loads all the edition grids under Task Demonstration, and also loads the input grid that tests the user
+ * @param {*} train From the JSON data (contains the input and output grids)
+ * @param {*} test  Contains the testing set (the input grids that the user is supposed to solve)
+ */
 function loadJSONTask(train, test) {
     resetTask();
-    $('#modal_bg').hide();
+    $('#modal_bg').hide();          //hides the introduction page
     $('#error_display').hide();
     $('#info_display').hide();
 
+    // Loads every input/output pairs under Task Demonstration
     for (var i = 0; i < train.length; i++) {
         pair = train[i];
         values = pair['input'];
@@ -132,7 +188,7 @@ function loadJSONTask(train, test) {
         pair = test[i];
         TEST_PAIRS.push(pair);
     }
-    values = TEST_PAIRS[0]['input'];
+    values = TEST_PAIRS[0]['input'];                            //is there an output section?
     CURRENT_INPUT_GRID = convertSerializedGridToGridObject(values)
     fillTestInput(CURRENT_INPUT_GRID);
     CURRENT_TEST_PAIR_INDEX = 0;
@@ -140,6 +196,12 @@ function loadJSONTask(train, test) {
     $('#total_test_input_count_display').html(test.length);
 }
 
+/**
+ * Displays the name of the task
+ * @param {String} task_name        Name of task
+ * @param {Number} task_index       What number task
+ * @param {Number} number_of_tasks  How many tasks there
+ */
 function display_task_name(task_name, task_index, number_of_tasks) {
     big_space = '&nbsp;'.repeat(4); 
     document.getElementById('task_name').innerHTML = (
@@ -150,6 +212,11 @@ function display_task_name(task_name, task_index, number_of_tasks) {
     );
 }
 
+/**
+ * To load the task after the user selects a file from their computer
+ * @param {*} e The event of the user selecting a file
+ * @returns 
+ */
 function loadTaskFromFile(e) {
     var file = e.target.files[0];
     if (!file) {
@@ -157,6 +224,8 @@ function loadTaskFromFile(e) {
         return;
     }
     var reader = new FileReader();
+
+    //For when the reader is reading the file
     reader.onload = function(e) {
         var contents = e.target.result;
 
@@ -173,15 +242,21 @@ function loadTaskFromFile(e) {
         $('#load_task_file_input')[0].value = "";
         display_task_name(file.name, null, null);
     };
+
     reader.readAsText(file);
 }
 
+/**
+ * Displays a task when the user hits the "Start task from ..." button in the intro
+ */
 function randomTask() {
     var subset = "training";
     $.getJSON("https://api.github.com/repos/fchollet/ARC/contents/data/" + subset, function(tasks) {
-        var task_index = index; //Math.floor(Math.random() * tasks.length)
+        var task_index = index; //Math.floor(Math.random() * tasks.length)  <-- this is to set what tasks should be loaded first
         var task = tasks[task_index];
-        index++; 
+        index++; // ??
+
+        // Try to load the grids from the file
         $.getJSON(task["download_url"], function(json) {
             try {
                 train = json['train'];
@@ -190,11 +265,14 @@ function randomTask() {
                 errorMsg('Bad file format');
                 return;
             }
+
             loadJSONTask(train, test);
             //$('#load_task_file_input')[0].value = "";
+
             infoMsg("Loaded task training/" + task["name"]);
             display_task_name(task['name'], task_index, tasks.length);
         })
+
         .error(function(){
           errorMsg('Error loading task');
         });
@@ -204,6 +282,10 @@ function randomTask() {
     });
 }
 
+/**
+ * Loads the next test input onto the input grid
+ * @returns 
+ */
 function nextTestInput() {
     if (TEST_PAIRS.length <= CURRENT_TEST_PAIR_INDEX + 1) {
         errorMsg('No next test input. Pick another file?')
@@ -211,14 +293,20 @@ function nextTestInput() {
     }
     CURRENT_TEST_PAIR_INDEX += 1;
     values = TEST_PAIRS[CURRENT_TEST_PAIR_INDEX]['input'];
-    CURRENT_INPUT_GRID = convertSerializedGridToGridObject(values)
+    CURRENT_INPUT_GRID = convertSerializedGridToGridObject(values) //serializedgrid is actually the array representation??
     fillTestInput(CURRENT_INPUT_GRID);
     $('#current_test_input_id_display').html(CURRENT_TEST_PAIR_INDEX + 1);
     $('#total_test_input_count_display').html(test.length);
 }
 
+/**
+ * Compares the output grid to the correct solution to see if the solution is correct
+ * @returns 
+ */
 function submitSolution() {
     syncFromEditionGridToDataGrid();
+
+    //Referential output in the data that the gui compares it to
     reference_output = TEST_PAIRS[CURRENT_TEST_PAIR_INDEX]['output'];
     submitted_output = CURRENT_OUTPUT_GRID.grid;
     if (reference_output.length != submitted_output.length) {
@@ -238,12 +326,19 @@ function submitSolution() {
     infoMsg('Correct solution!');
 }
 
+/**
+ * Fills in the input grid (test input grid)
+ * @param {*} inputGrid The input Grid object
+ */
 function fillTestInput(inputGrid) {
     jqInputGrid = $('#evaluation_input');
     fillJqGridWithData(jqInputGrid, inputGrid);
     fitCellsToContainer(jqInputGrid, inputGrid.height, inputGrid.width, 400, 400);
 }
 
+/**
+ * Copies pixels from the input grid to the output grid
+ */
 function copyToOutput() {
     syncFromEditionGridToDataGrid();
     CURRENT_OUTPUT_GRID = convertSerializedGridToGridObject(CURRENT_INPUT_GRID.grid);
@@ -251,15 +346,19 @@ function copyToOutput() {
     $('#output_grid_size').val(CURRENT_OUTPUT_GRID.height + 'x' + CURRENT_OUTPUT_GRID.width);
 }
 
+
+//initializes jQuery selectable
+//makes the grid selectable (allows to select multiple cells)
 function initializeSelectable() {
     try {
         $('.selectable_grid').selectable('destroy');
     }
     catch (e) {
     }
+    //:checked means if the radio button was selected for the tool
     toolMode = $('input[name=tool_switching]:checked').val();
-    if (toolMode == 'select') {
-        infoMsg('Select some cells and click on a color to fill in, or press C to copy');
+    if (toolMode == 'select' || toolMode == 'group') {
+        infoMsg('Select pixels');
         $('.selectable_grid').selectable(
             {
                 autoRefresh: false,
@@ -274,37 +373,49 @@ function initializeSelectable() {
     }
 }
 
+
 // Initial event binding.
 
 $(document).ready(function () {
+
+    //------------------------------------------------------------------------------
+    //this part selects which symbol is picked (which color is picked)
     $('#symbol_picker').find('.symbol_preview').click(function(event) {
         symbol_preview = $(event.target);
         $('#symbol_picker').find('.symbol_preview').each(function(i, preview) {
             $(preview).removeClass('selected-symbol-preview');
         })
         symbol_preview.addClass('selected-symbol-preview');
+    // -----------------------------------------------------------------------------
 
+        // For when the tool mode is either in select or group
         toolMode = $('input[name=tool_switching]:checked').val();
-        if (toolMode == 'select') {
+        if (toolMode == 'select' || toolMode == 'group') {
             $('.edition_grid').find('.ui-selected').each(function(i, cell) {
                 symbol = getSelectedSymbol();
                 setCellSymbol($(cell), symbol);
             });
         }
+
+
     });
 
+    // Makes the cells of the grid interactive
     $('.edition_grid').each(function(i, jqGrid) {
         setUpEditionGridListeners($(jqGrid));
     });
 
+    // For when the user selects a file
     $('.load_task').on('change', function(event) {
         loadTaskFromFile(event);
     });
 
+    
     $('.load_task').on('click', function(event) {
       event.target.value = "";
     });
 
+    
     $('input[type=radio][name=tool_switching]').change(function() {
         initializeSelectable();
     });
