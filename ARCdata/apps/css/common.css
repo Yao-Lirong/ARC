@@ -62,6 +62,7 @@
 
 /*Selectable*/
 
+/* url(../img/brushed-alum.png */
 .ui-selected {
     background-image: url(../img/black-twill.png), url(../img/brushed-alum.png);
 }

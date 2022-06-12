@@ -174,6 +174,7 @@ function loadJSONTask(train, test) {
     $('#modal_bg').hide();          //hides the introduction page
     $('#error_display').hide();
     $('#info_display').hide();
+    $('#add_object_btn').hide();
 
     // Loads every input/output pairs under Task Demonstration
     for (var i = 0; i < train.length; i++) {
@@ -350,6 +351,9 @@ function copyToOutput() {
 //initializes jQuery selectable
 //makes the grid selectable (allows to select multiple cells)
 function initializeSelectable() {
+
+    $('#add_object_btn').hide();
+    
     try {
         $('.selectable_grid').selectable('destroy');
     }
@@ -357,7 +361,7 @@ function initializeSelectable() {
     }
     //:checked means if the radio button was selected for the tool
     toolMode = $('input[name=tool_switching]:checked').val();
-    if (toolMode == 'select' || toolMode == 'group') {
+    if (toolMode == 'select') {
         infoMsg('Select pixels');
         $('.selectable_grid').selectable(
             {
@@ -370,6 +374,9 @@ function initializeSelectable() {
                 }
             }
         );
+    }
+    else if (toolMode == 'group') {
+        $('#add_object_btn').toggle();
     }
 }
 
@@ -390,14 +397,12 @@ $(document).ready(function () {
 
         // For when the tool mode is either in select or group
         toolMode = $('input[name=tool_switching]:checked').val();
-        if (toolMode == 'select' || toolMode == 'group') {
+        if (toolMode == 'select') {
             $('.edition_grid').find('.ui-selected').each(function(i, cell) {
                 symbol = getSelectedSymbol();
                 setCellSymbol($(cell), symbol);
             });
         }
-
-
     });
 
     // Makes the cells of the grid interactive
