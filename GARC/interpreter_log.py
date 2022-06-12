@@ -3,6 +3,7 @@ import json
 import queue
 import time
 import cProfile
+import tracemalloc
 import os
 from API.canvas import *
 from API.color import *
@@ -10,11 +11,13 @@ from obj_a_log import *
 from scipy.special import loggamma, logsumexp
 
 RUNTIME = 600.0
-WANTED_RESULTS_NUM = 100
-TOPRINT_RESULTS_NUM = 5
-assert TOPRINT_RESULTS_NUM < WANTED_RESULTS_NUM
-PRINT_FREQUENCY = 100
+WANTED_RESULTS_NUM = 5000
+TOPRINT_RESULTS_NUM = 10
+assert TOPRINT_RESULTS_NUM <= WANTED_RESULTS_NUM
+PRINT_FREQUENCY = 10000000
 SERVER = True
+ENABLE_PROFILER = False
+ENABLE_LEGACY = False
 # parent_dir = os.path.dirname(os.getcwd())
 arc_data_dir = "/home/ly373/ARC/ARCdata/data/training/" if SERVER \
 			   else os.path.join(os.getcwd(), "ARCdata\\data\\training\\")
@@ -120,13 +123,17 @@ class Astar():
 		self.alpha = alpha
 		self.theta = theta
 		
-		# node: hash_canvas -> [canvas, preds]
-		# where `canvas` is the np representation of the state/canvas we are in 
-		# `preds` is a list of hash of the predecessors of this canvas
+		"""
+		node: hash_canvas -> [canvas, preds]
+		where `canvas` is the np representation of the state/canvas we are in 
+		`preds` is a list of hash of the predecessors of this canvas
+		"""
 		self.nodes = {}
-		# self.edges: (hash_u, hash_v) -> commands
-		# `hash_u` and `hash_v` are hash of two canvases
-		# `commands` contains a list of commands that can transform canvas u into v
+		"""
+		self.edges: (hash_u, hash_v) -> commands
+		`hash_u` and `hash_v` are hash of two canvases
+		`commands` contains a list of commands that can transform canvas u into v
+		"""
 		self.edges = {}
 
 		self.total_iterations = 0
@@ -153,7 +160,7 @@ class Astar():
 		area = xlen * ylen
 
 		target_colors = list(filter(
-			lambda c : sum(sum(np.where(target == np.array(c), True, False))) != 0, 
+			lambda c : np.sum(np.sum(np.where(target == np.array(c), True, False))) != 0, 
 			non_black_colors))
 		target_colors += [Color.Black] # always include black
 		target_colors_num = len(target_colors)
@@ -192,7 +199,7 @@ class Astar():
 			bitmap = np.array(bitmap, dtype = bool)
 			xl = len(bitmap)
 			yl = len(bitmap[0])
-			colored_bits = sum(sum(bitmap))
+			colored_bits = np.sum(np.sum(bitmap))
 			cbitmap = dirchilet_multinom_cost([colored_bits, xl*yl - colored_bits], self.alpha) \
 					+ baseline_cost + theta_bm_cost
 			return cbitmap
@@ -208,7 +215,7 @@ class Astar():
 		desired_cost = get_desired_cost(self.solution_program)
 		final_states = []
 		
-		def diff_to_target(canvas): return sum(sum(canvas != target))
+		def diff_to_target(canvas): return np.sum(np.sum(canvas != target))
 		def heuristic_distance(canvas):
 			diff_num = diff_to_target(canvas)
 			if diff_num == 0: return 0
@@ -219,7 +226,7 @@ class Astar():
 
 		blank_canvas = new_canvas(xlen, ylen)
 		start_state = state(blank_canvas)
-		self.nodes[hash(start_state)] = [start_state.canvas, []]
+		if ENABLE_LEGACY: self.nodes[hash(start_state)] = [start_state.canvas, []]
 		q.put(start_state)
 
 		# Preprocess possible objects to draw
@@ -292,8 +299,8 @@ class Astar():
 							this_command = obj("cheat", x, y, c, xlen = xl, ylen = yl)
 							
 							this_bitmap_mask[x:x+xl, y:y+yl] = bitmap_mask[x:x+xl, y:y+yl]
-							if sum(sum(this_bitmap_mask)) == 0: continue # if there is nothing to draw for this color in this region, we just skip this region
-							colored_bits = sum(sum(this_bitmap_mask))
+							if np.sum(np.sum(this_bitmap_mask)) == 0: continue # if there is nothing to draw for this color in this region, we just skip this region
+							colored_bits = np.sum(np.sum(this_bitmap_mask))
 							
 							""" Duplicate Code with Bitmap Cost Preprocessing, 
 								need to Change Both sections when making changes
@@ -332,9 +339,12 @@ class Astar():
 				counter = 0
 					
 			if this_hash in vis:
+				# print("Yes Used, WHAT??")
+				# self.print_path_state(this_state)
+				# print("\n\n")
 				continue
 			vis.add(this_hash)
-			this_canvas = self.nodes[this_hash][0]
+			this_canvas = this_state.canvas
 			this_command_cost = this_state.command_cost
 
 			# Search Regular Objects
@@ -342,34 +352,35 @@ class Astar():
 			for i in range(len(next_canvases)):
 				next_canvas = next_canvases[i]
 
-				# TODO: only considers the commands that improve the cost
 				if diff_to_target(next_canvas) >= diff_to_target(this_canvas): continue
 
 				next_command = obj_commands[i]
 				next_hash = hash_canvas(next_canvas)
-				if next_hash not in self.nodes: 
-					self.nodes[next_hash] = [next_canvas, [this_canvas]]
-				else:
-					self.nodes[next_hash][1].append(this_canvas)
+				if ENABLE_LEGACY:
+					if next_hash not in self.nodes: 
+						self.nodes[next_hash] = [next_canvas, [this_canvas]]
+					else:
+						self.nodes[next_hash][1].append(this_canvas)
 
 				hrstc_dis = heuristic_distance(next_canvas)
 				next_command_cost = this_command_cost + \
 									(rec_cost if next_command.type == "rectangle" else \
 									dot_cost if next_command.type == "dot" else line_cost)
 				next_cost = next_command_cost + hrstc_dis
-				next_state = state(next_canvas, next_cost, next_command_cost, this_state, next_command)
+				next_state = state(next_canvas, next_cost, next_command_cost, this_state, next_command, next_hash)
 				
-				if (this_hash, next_hash) not in self.edges:
-					self.edges[(this_hash, next_hash)] = [(next_command, next_cost, hrstc_dis)]
-				else:
-					self.edges[(this_hash, next_hash)].append((next_command, next_cost, hrstc_dis))
+				if ENABLE_LEGACY:
+					if (this_hash, next_hash) not in self.edges:
+						self.edges[(this_hash, next_hash)] = [(next_command, next_cost, hrstc_dis)]
+					else:
+						self.edges[(this_hash, next_hash)].append((next_command, next_cost, hrstc_dis))
 
 				if hrstc_dis == 0: 
 					final_states.append(next_state)
 					if next_cost == desired_cost: print("Found Desired Program at iteration %d" %(self.total_iterations))
 					if len(final_states) == WANTED_RESULTS_NUM: return final_states, desired_cost
-
-				if hash(next_state) not in vis: q.put(next_state)
+				# put in queue only if it is not a final state and it was not visited
+				elif next_hash not in vis: q.put(next_state)
 
 			# Search Cheating yet Expensive Shortcuts
 			next_canvases = np.where(bitmap_masks, bitmaps, this_canvas)
@@ -381,27 +392,31 @@ class Astar():
 
 				next_command = bitmap_commands[i]
 				next_hash = hash_canvas(next_canvas)
-				if next_hash not in self.nodes: 
-					self.nodes[next_hash] = [next_canvas, [this_canvas]]
-				else:
-					self.nodes[next_hash][1].append(this_canvas)
+				if ENABLE_LEGACY:
+					if next_hash not in self.nodes: 
+						self.nodes[next_hash] = [next_canvas, [this_canvas]]
+					else:
+						self.nodes[next_hash][1].append(this_canvas)
 				
 				hrstc_dis = heuristic_distance(next_canvas)
 				next_command_cost = this_command_cost + bitmap_costs[i]
 				next_cost = next_command_cost + hrstc_dis
-				next_state = state(next_canvas, next_cost, next_command_cost, this_state, next_command)
+				next_state = state(next_canvas, next_cost, next_command_cost, this_state, next_command, next_hash)
 				
-				if (this_hash, next_hash) not in self.edges:
-					self.edges[(this_hash, next_hash)] = [(next_command, next_cost, hrstc_dis)]
-				else:
-					self.edges[(this_hash, next_hash)].append((next_command, next_cost, hrstc_dis))
+				if ENABLE_LEGACY:
+					if (this_hash, next_hash) not in self.edges:
+						self.edges[(this_hash, next_hash)] = [(next_command, next_cost, hrstc_dis)]
+					else:
+						self.edges[(this_hash, next_hash)].append((next_command, next_cost, hrstc_dis))
 
 				if hrstc_dis == 0: 
 					final_states.append(next_state)
 					if next_cost == desired_cost: print("Found Desired Program at iteration %d" %(self.total_iterations))
 					if len(final_states) == WANTED_RESULTS_NUM: return final_states, desired_cost
 
-				if hash(next_state) not in vis: q.put(next_state)
+				elif next_hash not in vis: q.put(next_state)
+
+		return final_states, desired_cost
 
 	def print_path_state(self, final_state, edge_only=False):
 		xlen = x_length(final_state.canvas)
@@ -409,7 +424,7 @@ class Astar():
 		blank_canvas = new_canvas(xlen, ylen)
 		current = final_state
 		path = []
-		while hash_canvas(current.canvas) != hash_canvas(blank_canvas):
+		while hash(current) != hash_canvas(blank_canvas):
 			if not edge_only: display(current.canvas)
 			print(current.edge, current.command_cost)
 			current = current.parent
@@ -423,21 +438,25 @@ class Astar():
 	def search_one(self, taskname, tasknum, isinput):
 		
 		canvas = np.array(read_task(taskname, tasknum, isinput))
-		sol = __import__("p_"+taskname)
+		sol = __import__("p_" + taskname + ("_i" if isinput else "_o"))
 		self.solution_program = sol.desired_programs[tasknum]
 
 		canvas = array_to_canvas(canvas)
 		display(canvas)
 
-		if SERVER:
+		if ENABLE_PROFILER:
 			profiler = cProfile.Profile()
 			profiler.enable()
+			tracemalloc.start()
 
 		predictions, solution_cost = self.search_aux(canvas)
 
-		if SERVER:
+		if ENABLE_PROFILER:
 			profiler.disable()
 			profiler.dump_stats("/home/ly373/ARC/GARC/search.stats")
+
+			print("maximum memory usage is " + str(tracemalloc.get_traced_memory()[1] / 1024 / 1024 / 1024) + " Gb")
+			tracemalloc.stop()
 		
 		print("Looking for a program with cost " + str(solution_cost))
 		print("Used a total %d iterations" %(self.total_iterations))
@@ -460,7 +479,8 @@ class Astar():
 			self.print_path_state(sorted_prediction[i], True)
 			print("---------%d---------" %(i))
 		
-		return max(solution_cost - sorted_prediction[0].command_cost, 0)
+		return (solution_rank, 
+				solution_cost - sorted_prediction[0].command_cost)
 
 
 
@@ -476,7 +496,7 @@ if __name__ == "__main__":
 	# canvas = np.array([[0,1,1],[0,1,1],[1,0,0]])
 
 	# 切方块
-	TASKNAME, TASKNUM, ISINPUT = "1190e5a7", 1, True
+	TASKNAME, TASKNUM, ISINPUT = "1190e5a7", 0, True
 
 	# 切方块
 	# canvas = np.array(read_task("1190e5a7", 0, True))
@@ -488,8 +508,10 @@ if __name__ == "__main__":
 	# canvas = np.array(read_task("06df4c85", 2, True))
 
 	# search_one(TASKNAME, TASKNUM, ISINPUT)
+
+	TASKNAME, TASKNUM, ISINPUT = "0a938d79", 0, True
 	
-	alpha, theta = 1.0, [1.0, 1.0, 1.0, 1.0]
+	alpha, theta = 0.0009118819655545162, [14.0, 15.0, 15.0, 11.0]
 	theta = list(np.multiply(-1, theta))
 	theta = list(map(lambda t : t - logsumexp(theta), theta))
 	print("Alpha: ", alpha)

@@ -16,8 +16,7 @@ GARC/notes.md
 # Local
 GARC/samples/
 .idea/
-GARC/p_05269061*
-GARC/p_0520fde7*
+GARC/y_*.py
 
 # Server
 *.err
@@ -29,6 +28,7 @@ GARC/search-alpha.sh
 GARC/*.sub
 GARC/*.sh
 GARC/Makefile
+GARC/p_*.py
 
 # Not Needed 
 *.txt

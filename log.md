@@ -140,7 +140,7 @@ There are two important functions in A*:
 
 It is possible that sometimes the heuristics direct to the suboptimal solution, but we are good as long as the final path cost is consistent with what we need. In practice, we first obtain the best 100 solutions based on heuristics and sort them according to final cost. As long as the solution we want has the lowest final cost, we are good. 
 
-### 2022-04-15
+### 2022-04-15 Dirichlet
 
 #### Beta
 
@@ -189,7 +189,7 @@ Our job is to find what $\alpha$ gives us 2 small bitmaps is better than 1 big b
 - visualization
 - argument parsing for filename, alpha
 
-### 2022-04-29
+### 2022-04-29 Hyperparam Search
 
 #### Logic of Cost
 
@@ -280,3 +280,49 @@ We now have tasks:
 Some problems we can try first: 3, 6I, 7, 9, 11, 12, 13, 14, 15, 17
 
 Later in our implementation, we may change our Dirichlet Distribution to Chinese Restaurant Process (each customer choosing to either sit at an occupied table with a probability proportional to the number of customers already there or an unoccupied table) to simulate the fact that if all the objects we've drawn so far are lines, we should be more likely to choose lines. 
+
+
+
+### 2022-05-20
+
+深搜 20000 - 30000 ("1190e5a7", 0, True | 30000 -> 26Gb, 28 min)
+
+前搜 100 即可
+
+
+
+### 2022-06-03 Kaggle Solution
+
+#### Analyze Hyperparameters
+
+After we do all these searches over hyperparameters, two things we want to look at are: 
+
+- loss (cost difference): remember from *2022-04-29 Interpreting Result*, we defined cost as the log of probability of a program being sampled. In *2022-05-04*, we also defined the loss function $\mathcal L$. Here, we plot this loss function (greater than 0 part of the difference in cost between the 1st place prediction and our desired program)
+- rank in prediction: which place in predictions does our desired program appear? 
+
+We plot a graph of average of loss (excluding the 0 loss) and the average rank. 
+
+#### Kaggle Solution
+
+Look at the [1st place Kaggle solution](https://github.com/top-quarks/ARC-solution), run its solution and find what he cannot solve. This solution basically solves the problem pixel-wise instead of object-wise. Test how it works on the [40 problems](https://arc-visualizations.github.io).
+
+#### Search Pruning
+
+We can adopt a canonical order to prune symmetry. 
+
+- symmetry: Imagine two non-overlapping objects A and B. Drawing A first then B is equivalent to drawing B first then A. Therefore, we say these two cases are symmetric.
+- Canonical Order: Some order to ensure that our program will always do first A then B, or first B then A. (Just another way to say pruning, basically if we eventually choose to do first A then B, B-A cannot appear in our search)
+
+This method is also mentioned in Kaggle 1st solution that he made a DAG of these programs. 
+
+We can also explicitly tell our search to prefer non-overlapping (non occlusion) solutions, because in original ARC problem, occluded problems are rare. (I don't know whether this is true though, can do this later)
+
+#### Web Interface 
+
+For our web interface, we not only want it to show how our search parse objects, we also want to give users a way to annotate objects using that interface. That is, the interface should not only present the predicted programs, but should also allow users to draw desired solution. Specifically, when the user draws solutions, our program should record start x, start y, x length, y length, object type, and the content if it is a bitmap (basically everything in our `p_*.py` file and `obj_a_log.py` file now) So it should be like object detection in CV. 
+
+### 2022-06-05 Personal Note on How Kaggle 1st Works 
+
+He hand coded 100 or so transformation function by looking at 100 tasks. Then, for a specific test task, he does a search inside this DSL space on the training data to search which combination of functions manages to transform the input to output. Then he applies the predicted program to the test input. 
+
+He augmented his samples through diagonally flipping. 
