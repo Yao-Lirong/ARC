@@ -72,6 +72,10 @@
     z-index: 1000;
 }
 
+.group-selected {
+    background-image: url(../img/black-twill.png), url(../img/brushed-alum.png);
+}
+
 /*Message display*/
 
 #error_display {

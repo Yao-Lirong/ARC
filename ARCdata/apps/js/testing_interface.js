@@ -7,6 +7,7 @@
 
     - jqGrid is the edition grid
 
+    - .ui-selected is automatically added to something that is selected
 
 */
 
@@ -353,7 +354,7 @@ function copyToOutput() {
 function initializeSelectable() {
 
     $('#add_object_btn').hide();
-    
+
     try {
         $('.selectable_grid').selectable('destroy');
     }
@@ -377,6 +378,24 @@ function initializeSelectable() {
     }
     else if (toolMode == 'group') {
         $('#add_object_btn').toggle();
+        $('.selectable_grid').selectable(
+            {
+                filter: '> .row > .cell',
+                start: function(event, ui) {
+                    $('.ui-selected').each(function(i, e) {
+                        $(e).removeClass('ui-selected');
+                        $(e).addClass('group-selected');
+                    });
+                },
+                selected: function(event, ui) {
+                    $('.ui-selected.group-selected').each(function(i, e) {
+                        $(e).removeClass('ui-selected');
+                        $(e).removeClass('group-selected');
+                    });
+                }
+            }
+        );
+
     }
 }
 
