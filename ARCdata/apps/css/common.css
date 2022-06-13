@@ -76,6 +76,11 @@
     background-image: url(../img/black-twill.png), url(../img/brushed-alum.png);
 }
 
+/* Shows on cells that are in the object */
+.object-selection {
+    background-image: url(../img/brushed-alum.png);
+}
+
 /*Message display*/
 
 #error_display {

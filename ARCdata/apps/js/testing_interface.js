@@ -376,17 +376,21 @@ function initializeSelectable() {
             }
         );
     }
+
+    // When a cell is selected, it has the class .ui-selected or .group-selected
     else if (toolMode == 'group') {
         $('#add_object_btn').toggle();
         $('.selectable_grid').selectable(
             {
                 filter: '> .row > .cell',
+
                 start: function(event, ui) {
                     $('.ui-selected').each(function(i, e) {
                         $(e).removeClass('ui-selected');
                         $(e).addClass('group-selected');
                     });
                 },
+
                 selected: function(event, ui) {
                     $('.ui-selected.group-selected').each(function(i, e) {
                         $(e).removeClass('ui-selected');
@@ -395,7 +399,6 @@ function initializeSelectable() {
                 }
             }
         );
-
     }
 }
 
@@ -439,7 +442,29 @@ $(document).ready(function () {
       event.target.value = "";
     });
 
-    
+    // Attaching the event listener inside
+    $('#object_list').on('click', 'input', function(e) {
+        $(`.object-${this.value}`).each(function(i, e) {
+            $(e).toggleClass('object-selection');
+        });
+    });
+
+    // When the add object button is clicked
+    $('#add_object_btn').on('click', function(e) {
+        nameObj = prompt("Label object");
+        $('.group-selected, .ui-selected').each(function(i, e) {
+            $(e).addClass(`object-${nameObj}`);
+            $(e).removeClass('group-selected ui-selected');
+        });
+        btn = $('<input>').attr( {
+            type: 'button',
+            name: 'object-label',
+            class: 'objects',
+            value: `${nameObj}`
+        });
+        $(btn).appendTo('#object_list');
+    });
+
     $('input[type=radio][name=tool_switching]').change(function() {
         initializeSelectable();
     });

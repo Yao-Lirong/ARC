@@ -146,10 +146,8 @@
                         <!--To contain the objects that the user identifies-->
                         <div id="object_labeling">
                             <input type="button" id="add_object_btn" name="add-object" value="Add Object">
+                            <input type="button" value="Remove Object" name="remove-object" id="remove_object_btn" hidden>
                         </div>
-
-                        <!--Will contain all the objects the user selects-->
-                        <div id="object_list"></div>
 
                         
                     </div>
@@ -157,6 +155,11 @@
                     <!--To display any messages-->
                     <div id="error_display"></div>
                     <div id="info_display"></div>
+
+                    <!--Will contain all the objects the user selects-->
+                    <div id="object_list">
+                        <p class="objects">Objects: </p>
+                    </div>
                 </div>
             </div>
         </div>

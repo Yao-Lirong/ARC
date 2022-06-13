@@ -35,7 +35,7 @@ body {
 #evaluation_output_editor {
     float: left;
     width: 500px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 #load_task_control_btns {
@@ -170,10 +170,27 @@ input, button {
 
 /*  New additions!  */
 #add_object_btn {
-    float: left;
+    /* float: left; */
     color: #a1a1a1;
     background-color: rgb(58, 69, 65);
     border-radius: 3px;
     text-shadow: 1px 1px 2px gray;
     margin-top: 10px;
+}
+
+#object_list {
+    float: left;
+}
+
+.objects {
+    display: block;
+    margin-top: 10px;
+    background-color: blanchedalmond;
+    color: black;
+    border-radius: 4px;
+    text-shadow: 1px 1px 2px gold;
+}
+
+#object_labeling {
+    float: left;
 }
