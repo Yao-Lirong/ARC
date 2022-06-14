@@ -446,19 +446,20 @@ $(document).ready(function () {
 
     // Attaching the event listener inside
     $('.object-list').on('click', '.an-object', function(e) {
-        $(`.object-${this.value}`).each(function(i, e) {
+        $(`.object-${(this.value.replace(/\s/g, ''))}`).each(function(i, e) {
             $(e).toggleClass('object-selection');
         }); 
     });
 
     // When the add object button is clicked
     $('#add_object_btn').on('click', function(e) {
-        nameObj = prompt("Label object");
+        let nameObj = prompt("Label object");
+        let forClass = nameObj.replace(/\s/g, '');
         $('.group-selected, .ui-selected').each(function(i, e) {
-            $(e).addClass(`object-${nameObj}`);
+            $(e).addClass(`object-${forClass}`);
             $(e).removeClass('group-selected ui-selected');
         });
-        $('.object-list').append(`<li class='list-item-${nameObj}'><input type='button' class='an-object' value=${nameObj} />
+        $('.object-list').append(`<li class='list-item-${forClass}'><input type='button' class='an-object' value='${nameObj}' />
             <input type='checkbox' class='remove-obj-check' name='${nameObj}' value='' /></li>`);
     });
 
