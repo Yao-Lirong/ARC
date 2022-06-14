@@ -180,11 +180,21 @@ input, button {
 
 #object_list {
     float: left;
+    width: 100%;
 }
 
-.objects {
-    display: block;
+.object-list {
+    width: 100%;
+}
+
+.list-item-obj {
+    width: 100%;
+}
+
+.an-object {
+    display: inline-block;
     margin-top: 10px;
+    width: fit-content;
     background-color: blanchedalmond;
     color: black;
     border-radius: 4px;
@@ -193,4 +203,8 @@ input, button {
 
 #object_labeling {
     float: left;
+}
+
+.remove-obj-check {
+    display: inline-block;
 }

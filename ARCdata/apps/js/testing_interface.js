@@ -354,6 +354,7 @@ function copyToOutput() {
 function initializeSelectable() {
 
     $('#add_object_btn').hide();
+    $('#remove_object_btn').hide();
 
     try {
         $('.selectable_grid').selectable('destroy');
@@ -380,6 +381,7 @@ function initializeSelectable() {
     // When a cell is selected, it has the class .ui-selected or .group-selected
     else if (toolMode == 'group') {
         $('#add_object_btn').toggle();
+        $('#remove_object_btn').toggle();
         $('.selectable_grid').selectable(
             {
                 filter: '> .row > .cell',
@@ -443,10 +445,10 @@ $(document).ready(function () {
     });
 
     // Attaching the event listener inside
-    $('#object_list').on('click', 'input', function(e) {
+    $('.object-list').on('click', '.an-object', function(e) {
         $(`.object-${this.value}`).each(function(i, e) {
             $(e).toggleClass('object-selection');
-        });
+        }); 
     });
 
     // When the add object button is clicked
@@ -456,13 +458,18 @@ $(document).ready(function () {
             $(e).addClass(`object-${nameObj}`);
             $(e).removeClass('group-selected ui-selected');
         });
-        btn = $('<input>').attr( {
-            type: 'button',
-            name: 'object-label',
-            class: 'objects',
-            value: `${nameObj}`
+        $('.object-list').append(`<li class='list-item-${nameObj}'><input type='button' class='an-object' value=${nameObj} />
+            <input type='checkbox' class='remove-obj-check' name='${nameObj}' value='' /></li>`);
+    });
+
+    // Attaching event listener to when user wants to remove an object from the list
+    $('#remove_object_btn').on('click', function(e) {
+        $('.remove-obj-check').each(function(i, e) {
+            if ($(e).is(':checked')) {
+                obj = $(e).attr('name');
+                $(`.list-item-${obj}`).hide();
+            }
         });
-        $(btn).appendTo('#object_list');
     });
 
     $('input[type=radio][name=tool_switching]').change(function() {
