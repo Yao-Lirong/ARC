@@ -98,9 +98,19 @@ function setUpEditionGridListeners(jqGrid) {
 }
 
 /**
+ * Removes all objects from list, if any
+ */
+function resetObjList() {
+    $('.obj-list-item').each(function(i, e) {
+        $(e).remove();
+    });
+}
+
+/**
  * Resizes the edition grid (saves anything that was still on the canvas during resizing)ß
  */
 function resizeOutputGrid() {
+    resetObjList();
     size = $('#output_grid_size').val();
     size = parseSizeTuple(size);
     height = size[0];
@@ -175,7 +185,6 @@ function loadJSONTask(train, test) {
     $('#modal_bg').hide();          //hides the introduction page
     $('#error_display').hide();
     $('#info_display').hide();
-    $('#add_object_btn').hide();
 
     // Loads every input/output pairs under Task Demonstration
     for (var i = 0; i < train.length; i++) {
@@ -447,8 +456,10 @@ $(document).ready(function () {
     // Attaching the event listener inside
     $('.object-list').on('click', '.an-object', function(e) {
         $(`.object-${(this.value.replace(/\s/g, ''))}`).each(function(i, e) {
-            $(e).toggleClass('object-selection');
+            var randomColor = Math.floor(Math.random()*16777215).toString(16);
+            $(e).toggleClass(`object-selection`);
         }); 
+        $(this).toggleClass('an-object-selected');
     });
 
     // When the add object button is clicked
@@ -459,7 +470,7 @@ $(document).ready(function () {
             $(e).addClass(`object-${forClass}`);
             $(e).removeClass('group-selected ui-selected');
         });
-        $('.object-list').append(`<li class='list-item-${forClass}'><input type='button' class='an-object' value='${nameObj}' />
+        $('.object-list').append(`<li class='list-item-${forClass} obj-list-item'><input type='button' class='an-object' value='${nameObj}' />
             <input type='checkbox' class='remove-obj-check' name='${nameObj}' value='' /></li>`);
     });
 
@@ -467,8 +478,8 @@ $(document).ready(function () {
     $('#remove_object_btn').on('click', function(e) {
         $('.remove-obj-check').each(function(i, e) {
             if ($(e).is(':checked')) {
-                obj = $(e).attr('name');
-                $(`.list-item-${obj}`).hide();
+                obj = $(e).parent();
+                obj.remove();
             }
         });
     });
