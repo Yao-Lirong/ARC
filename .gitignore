@@ -1,6 +1,5 @@
 # VHE 
 Resources/
-ARCdata/
 vhe_impl/
 *.pyc
 vhe/.ipynb_checkpoints/
