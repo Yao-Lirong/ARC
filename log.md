@@ -326,3 +326,11 @@ For our web interface, we not only want it to show how our search parse objects,
 He hand coded 100 or so transformation function by looking at 100 tasks. Then, for a specific test task, he does a search inside this DSL space on the training data to search which combination of functions manages to transform the input to output. Then he applies the predicted program to the test input. 
 
 He augmented his samples through diagonally flipping. 
+
+### 2022-06-10
+
+Tasks to do:
+
+- Try to output Kaggle solution's functions
+- Learn web programming as to build the annotation interface
+- Create a pipeline to produce results and visualize results. 
