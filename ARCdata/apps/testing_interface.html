@@ -16,55 +16,78 @@
 
     </head>
     <body>
+
+        <!--To load the introduction screen-->
         <div id="modal_bg">
             <div id="modal">
                 <div>Welcome to the ARC testing interface. <br /> Choose a task file to start, or click on "Random task" to load one from the ARC project on github.</div>
                 <br />
                 <input type="file" class="load_task"/>
                 <button onclick="randomTask()" id="random_task_btn">Start task from ...</button>
+                <!--When button is clicked, the next div is loaded-->
             </div>
         </div>
+
+
+        <!--What we actually see when editing the grid-->
         <div id="workspace">
 
+            <!--'#demonstration_examples_view' contains the input/output grids for the samples that were completed already-->
+            <!--Will need to edit this section in order to label the objects in Task demonstration-->
             <div id="demonstration_examples_view">
                 <div class="text" id="task_demo_header">Task demonstration</div>
                 <div id="task_preview"></div>
             </div>
 
+            <!--The right side of the workspace (contains the interactive canvases)-->
             <div id="evaluation_view">
 
+                <!--Contains the problem (the grid with the input)-->
                 <div id="evaluation-input-view">
                     <div class="text">Test input grid <span id="current_test_input_id_display">0</span>/<span id="total_test_input_count_display">0</span>
                         <button onclick="nextTestInput()">Next test input</button>
                     </div>
 
+                    <!--Contains the input canvas-->
                     <div id="evaluation_input" class="selectable_grid"></div>
+
                 </div>
 
+                <!--Contains the tools and interactive canvas to create/solve-->
                 <div id="evaluation_output_editor">
 
+                    <!--The upper right box (contains Load task JSON and such)-->
                     <div id="load_task_control_btns">
                         <label for="load_task_file_input">Load task JSON: </label>
                         <input type="file" id="load_task_file_input" class="load_task" style="display: none;"/>
+
+                        <!--Binds the button to load JSON tasks-->
                         <input type="button" value="Browse..." onclick="document.getElementById('load_task_file_input').click();" />
                         <button onclick="randomTask()" id="random_task_btn"> Next Task </button>
                         <p>
                         <label id='task_name'> Task name: </label>
                     </div>
 
+                    <!--Table for editing (to load everything below Load task JSON)-->
                     <div id="edition_view">
+
+                        <!--The box right below Load task JSON. Can be used to change grid size, Submit, etc.-->
                         <div id="editor_grid_control_btns">
+
+                            <!--For resizing-->
                             <div id="resize_control_btns">
                                 <label for="output_grid_size">Change grid size: </label>
                                 <input type="text" id="output_grid_size" class="grid_size_field" name="size" value="3x3">
                                 <button onclick="resizeOutputGrid()" id="resize_btn">Resize</button>
                             </div>
 
+                            <!--The three buttons below the resize grid option-->
                             <button onclick="copyFromInput()">Copy from input</button>
                             <button onclick="resetOutputGrid()">Reset grid</button>
                             <button onclick="submitSolution()" id="submit_solution_btn">Submit!</button>
                         </div>
 
+                        <!--Output grid is the display for the grid where the user can interact with it-->
                         <div id="output_grid">
                             <div class="edition_grid selectable_grid">
                                 <div class="row">
@@ -85,7 +108,7 @@
                             </div>
                         </div>
 
-
+                        <!--The radio buttons underneath the output grid-->
                         <div id="toolbar">
                             <div>
                                 <input type="radio" id="tool_edit"
@@ -99,9 +122,14 @@
                                 <input type="radio" id="tool_floodfill"
                                  name="tool_switching" value="floodfill">
                                 <label for="tool_floodfill">Flood fill</label>
+
+                                <input type="radio" id="tool_group"
+                                name="tool_switching" value="group">
+                                <label for="tool_group">Group Objects</label>
                             </div>
                         </div>
 
+                        <!--The color options avvailable to choose from-->
                         <div id="symbol_picker">
                             <div class="symbol_preview symbol_0 selected-symbol-preview" symbol="0"></div>
                             <div class="symbol_preview symbol_1" symbol="1"></div>
@@ -114,10 +142,26 @@
                             <div class="symbol_preview symbol_8" symbol="8"></div>
                             <div class="symbol_preview symbol_9" symbol="9"></div>
                         </div>
+
+                        <!--To contain the objects that the user identifies-->
+                        <div id="object_labeling">
+                            <input type="button" id="add_object_btn" name="add-object" value="Add Object">
+                            <input type="button" value="Remove Object" name="remove-object" id="remove_object_btn">
+                        </div>
+
+                        <!--Will contain all the objects the user selects-->
+                        <div id="object_list">
+                            <p class="object-title">Objects: </p>
+                            <ul class="object-list"></ul>
+                        </div>
+
+                        
                     </div>
 
+                    <!--To display any messages-->
                     <div id="error_display"></div>
                     <div id="info_display"></div>
+
                 </div>
             </div>
         </div>

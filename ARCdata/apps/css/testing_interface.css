@@ -35,7 +35,7 @@ body {
 #evaluation_output_editor {
     float: left;
     width: 500px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 #load_task_control_btns {
@@ -166,4 +166,62 @@ input, button {
 
 #modal input {
     margin-left: 70px;
+}
+
+/*  New additions!  */
+
+#add_object_btn {
+    /* float: left; */
+    color: #a1a1a1;
+    background-color: rgb(58, 69, 65);
+    border-radius: 3px;
+    text-shadow: 1px 1px 2px gray;
+    margin-top: 10px;
+}
+
+#object_list {
+    float: left;
+    margin-top: 10px;
+    margin-right: 200px;
+    margin-bottom: 10px;
+    width: 30%;
+    min-height: 100px;
+    border-style: solid;
+    border-color: 1px black;
+}
+
+.object-list {
+    width: 100%;
+}
+
+.list-item-obj {
+    width: 100%;
+}
+
+.an-object {
+    display: inline-block;
+    margin-top: 10px;
+    width: fit-content;
+    background-color: gray;
+    color: black;
+    border-radius: 4px;
+    text-shadow: 0px 0px 2px white;
+}
+
+.an-object-selected {
+    background-color: blanchedalmond !important;
+}
+
+#object_labeling {
+    float: left;
+}
+
+.remove-obj-check {
+    display: inline-block;
+}
+
+.object-title {
+    margin: 1px;
+    width: fit-content;
+
 }
