@@ -1,5 +1,6 @@
 import sys
 import json
+from matplotlib import colors
 import seaborn as sns
 import torch as T
 import numpy as np
@@ -25,12 +26,17 @@ def label_cells(ax, grid):
                     fontsize='x-small',
                     path_effects=[pe.withStroke(linewidth=2, foreground="black")])
 
+cmap = colors.ListedColormap(['white', 'red'])
+cmap = colors.ListedColormap(['#000', '#0074D9', '#FF4136', '#2ECC40', '#FFDC00', '#AAAAAA', '#F012BE', '#FF851B', '#7FDBFF', '#870C25'])
+bounds=[i for i in range(0, 11)]
+norm = colors.BoundaryNorm(bounds, cmap.N)
+
 def show(ax, t, label=False):
     t = T.tensor(t) if not isinstance(t, T.Tensor) else t
-    t = np.ma.masked_where(t == 0, t)
+    # t = np.ma.masked_where(t == 0, t)
     ax.axes.xaxis.set_visible(False)
     ax.axes.yaxis.set_visible(False)
-    ax.imshow(t, vmin=0, vmax=9)
+    ax.imshow(t, vmin=0, vmax=9, cmap = cmap, norm = norm)
     if label:
         label_cells(ax, t)
 
