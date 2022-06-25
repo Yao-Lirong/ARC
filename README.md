@@ -1,7 +1,7 @@
 # ARC
 An attempt to solve the [Abstraction and Reasoning Corpus](https://github.com/fchollet/ARC) using program synthesis. 
 
-Current work is on building [an interpreter](./GARC/interpreter.py) to detect objects in the problem.
+Current work is on building [an interpreter](./GARC/interpreter_log.py) to detect objects in the problem.
 
 Previously, we did
 

@@ -29,7 +29,29 @@ class state():
 
 
 class obj():
-	def __init__(self, tp = "", xs = 0, ys = 0, color = 0, l = 0, xlen = 0, ylen = 0):
+	def __init__(self, tp = "", xs = -1, ys = -1, color = -1, l = -1, xlen = -1, ylen = -1):
+		"""
+		type : str
+			type of this object, can be 
+			- 'dot'
+			- line ('vertical', 'parallel', 
+			  'diagonal_ur': diagonal line pointing upper right, 
+			  'diagonal_lr': diagonal line pointing lower right), 
+			- 'rectangle', starts from upper-left to lower-right
+			- 'cheat' : bitmap, starts from upper-left to lower-right
+		xs : int
+			x coordinate of the starting point
+		ys : int
+			y coordinate of the starting point
+		color : int
+			color of this object
+		l : int, optional
+			length of a line
+		xlen : int, optional
+			x-axis length of a rectangle/bitmap
+		ylen : int, optional
+			y-axis length of a rectangle/bitmap
+		"""
 		self.type = tp
 		self.len = l
 		self.xlen = xlen
