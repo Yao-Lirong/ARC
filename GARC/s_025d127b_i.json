@@ -1,0 +1,54 @@
+[
+    [ // first input
+        {
+
+        }
+    ],
+
+    [ // second input 
+        {   "type" : "parallel",
+            "xs" : 1,
+            "ys" : 6,
+            "len" : 5,
+            "xlen" : -1,
+            "ylen" : -1,
+            "color" : 8,
+            "layer" : 1,
+            "outbound" : false,
+            "bitmap" : null
+        },
+        {   "type" : "diagonal_lr", 
+            "xs" : 1,
+            "ys" : 5,
+            "len" : 3,
+            "xlen" : -1,
+            "ylen" : -1,
+            "color" : 8,
+            "layer" : 1,
+            "outbound" : false,
+            "bitmap" : null
+        },
+        {   "type" : "diagonal_lr", 
+            "xs" : 6,
+            "ys" : 5,
+            "len" : 3,
+            "xlen" : -1,
+            "ylen" : -1,
+            "color" : 8,
+            "layer" : 1,
+            "outbound" : false,
+            "bitmap" : null
+        },
+        {   "type" : "parallel",
+            "xs" : 4,
+            "ys" : 2,
+            "len" : 5,
+            "xlen" : -1,
+            "ylen" : -1,
+            "color" : 8,
+            "layer" : 1,
+            "outbound" : false,
+            "bitmap" : null
+        }
+    ]
+]
