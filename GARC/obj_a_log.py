@@ -46,11 +46,11 @@ class obj():
 		color : int
 			color of this object
 		l : int, optional
-			length of a line
+			length of a line, -1 if not a line 
 		xlen : int, optional
-			x-axis length of a rectangle/bitmap
+			x-axis length of a rectangle/bitmap, -1 if not a rec/bm
 		ylen : int, optional
-			y-axis length of a rectangle/bitmap
+			y-axis length of a rectangle/bitmap, -1 if not a rec/bm
 		"""
 		self.type = tp
 		self.len = l
