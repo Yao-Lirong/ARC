@@ -227,9 +227,11 @@ input, button {
 
 .object-label-form-container {
     float: left;
+    text-align: center;
     margin-top: 50px;
     border: 1px solid black;
     padding: 5px;
+    background-color: gray;
 }
 
 .form-headers {
@@ -244,16 +246,32 @@ input, button {
     margin: 0px;
 }
 
+.form-lengths {
+    background-color: darkslategray;
+    padding-bottom: 4px;
+}
+
 .form-lengths li {
     margin-top: 10px;
 }
 
 .form-colors {
     margin-top: 20px;
+    background-color: darkgray;
 }
 
 .color-label {
     font-weight: bold; 
     text-decoration: underline; 
     margin: 0px;
+}
+
+.misc-forms {
+    background-color: darkslategray;
+    padding-bottom: 4px;
+}
+
+.type-and-pos-form {
+    background-color: darkgray;
+    padding: 5px;
 }
