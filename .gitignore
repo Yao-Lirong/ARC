@@ -16,6 +16,7 @@ GARC/notes.md
 GARC/samples/
 .idea/
 GARC/y_*.py
+.DS_Store
 
 # Server
 *.err
