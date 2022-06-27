@@ -51,6 +51,87 @@
                     <!--Contains the input canvas-->
                     <div id="evaluation_input" class="selectable_grid"></div>
 
+                    <div class="object-label-form-container">
+                        <h3>Form for labeling objects</h3>
+                            
+                        <form class="object-label-form">
+                            <label for="type">Type of Object: </label>
+                            <select name="type">
+                                <option value="dot">dot</option>
+                                <option value="parallel">parallel</option>
+                                <option value="vertical">vertical</option>
+                                <option value="diagonal_ur">diagonal_ur</option>
+                                <option value="diagonal_lr">diagonal_lr</option>
+                                <option value="rectangle">rectangle</option>
+                                <option value="cheat">cheat</option>
+                            </select>
+
+                            <div class="form-position" style="margin-top: 10px;">
+                                <label for="xs">The x-position</label>
+                                <input type="number" name="xs" style="width: 40px;"/>
+
+                                <label for="ys">The y-position</label>
+                                <input type="number" name="ys" style="width: 40px;"/>
+                            </div>
+
+                            <div class="form-lengths">
+                                <p class="form-headers">Lengths: </p>
+                                <ul>
+                                    <li>
+                                        <label for="overall-length">overall length</label>
+                                        <input type="number" name="overall-length" style="width: 60px"/>
+                                    </li>
+                                    <li>
+                                        <label for="x-length">xlen</label>
+                                        <input type="number" name="x-length" style="width: 40px">
+
+                                        <label for="y-length">ylen</label>
+                                        <input type="number" name="y-length" style="width: 40px">
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="form-colors">
+                            <label for="color" class="color-label">Color of Object:</label> <br> <br>
+                            <select name="color">
+                                <option value="0">Black (0)</option>
+                                <option value="1">Cobalt (1)</option>
+                                <option value="2">Red (2)</option>
+                                <option value="3">Green (3)</option>
+                                <option value="4">Yellow (4)</option>
+                                <option value="5">Gray (5)</option>
+                                <option value="6">Purple (6)</option>
+                                <option value="7">Orange (7)</option>
+                                <option value="8">Sky (8)</option>
+                                <option value="9">Brown (9)</option>
+                            </select>
+                        </div>
+
+                        <div class="misc-forms">
+                            <p class="form-headers">Misc</p>
+
+                            <label for="layer-form">layer</label>
+                            <input type="number" name="layer-form" style="width: 40px;">
+
+                            <label for="outbound-form">outbound</label>
+                            <select name="outbound-form" class="outbound-form">
+                                <option value="true">true</option>
+                                <option value="false">false</option>
+                            </select>
+                            <br>
+                            <br>
+
+                            <label for="bitmap-form">bitmap</label>
+                            <input type="text" name="bitmap-form" style="width: 40px;" />
+
+                        </div>
+
+
+
+
+                        </form>
+                    </div>
+
                 </div>
 
                 <!--Contains the tools and interactive canvas to create/solve-->

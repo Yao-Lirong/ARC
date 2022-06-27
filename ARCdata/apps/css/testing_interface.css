@@ -184,7 +184,7 @@ input, button {
     margin-top: 10px;
     margin-right: 200px;
     margin-bottom: 10px;
-    width: 30%;
+    min-width: 30%;
     min-height: 100px;
     border-style: solid;
     border-color: 1px black;
@@ -223,5 +223,37 @@ input, button {
 .object-title {
     margin: 1px;
     width: fit-content;
+}
 
+.object-label-form-container {
+    float: left;
+    margin-top: 50px;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.form-headers {
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: underline; 
+}
+
+.form-lengths ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.form-lengths li {
+    margin-top: 10px;
+}
+
+.form-colors {
+    margin-top: 20px;
+}
+
+.color-label {
+    font-weight: bold; 
+    text-decoration: underline; 
+    margin: 0px;
 }
