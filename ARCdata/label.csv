@@ -1,0 +1,29 @@
+filename, intr in?, intr out?, un in, un out, in->out, notes
+007bbfb7, N, Y, , , set_frame copy, 
+00d62c1b, N, Y, , , fill_blank,
+017c7c7b, N, N, , , , tricky one 
+025d127b, Y, Y, , , move,
+045e512c, Y, Y, , 3, complete copy, unusual: start position of purple one is not unique
+0520fde7, N, N, , , overlap, 
+05269061, Y, Y, , , draw_line, 
+05f2a901, Y, Y, , , move,
+06df4c85, Y, Y, , , extract on_same_line draw_line, 
+08ed6ac7, Y, Y, , , sort color, 
+09629e4f, Y, Y, , , extract count equal scale, 
+0962bcdd, Y, Y, , , expand, 
+0a938d79, Y, Y, , , draw_line, 
+0b148d64, Y, N, , , , identify object by color 
+0ca9ddb6, N, Y, , , expand,
+0d3d703e, Y, Y, , , map color,
+0dfd9992, Y, Y, , , , find patterns under noise
+0e206a2e, Y, N, , , complete,
+10fcaaa3, N, Y, , , expand copy,
+11852cab, Y, Y, , , copy, 
+1190e5a7, Y, Y, , , extract, 
+137eaa0f, Y, Y, , , complete,
+150deff5, N, Y, , , find, find disharmony (one single block) paint red find square then find more disharmony
+178fcbfb, N, Y, , , draw_line, 
+1a07d186, Y, Y, , , move,
+1b2d62fb, Y, N, , , not(overlap), 
+1b60fb0c, Y, Y, , , copy,
+1bfc4729, N, Y, , , extend, 
