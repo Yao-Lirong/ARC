@@ -18,6 +18,8 @@ var CURRENT_OUTPUT_GRID = new Grid(3, 3);
 var TEST_PAIRS = new Array();
 var CURRENT_TEST_PAIR_INDEX = 0;
 var COPY_PASTE_DATA = new Array();
+// name of the current file
+var CURRENT_FILE_NAME = "";
 
 // Cosmetic.
 var EDITION_GRID_HEIGHT = 500;
@@ -214,6 +216,7 @@ function loadJSONTask(train, test) {
  * @param {Number} number_of_tasks  How many tasks there
  */
 function display_task_name(task_name, task_index, number_of_tasks) {
+    CURRENT_FILE_NAME = task_name;
     big_space = '&nbsp;'.repeat(4); 
     document.getElementById('task_name').innerHTML = (
         'Task name:' + big_space + task_name + big_space + (
@@ -413,6 +416,33 @@ function initializeSelectable() {
     }
 }
 
+/**
+ * Converts a form to JSON
+ * @param {*} form The form that we want to convert to JSON
+ * @returns 
+ */
+function convertFormToJSON(form) {
+    const array = form.serializeArray();
+    console.log(array);
+    const json = {};
+    $.each(array, function() {
+        json[this.name] = this.value || "";
+    });
+    return json;
+}
+
+async function writeSaveFile(json) {
+    const str = JSON.stringify(json);
+    const blob = new Blob([str], {
+        type: "application/json;charset=utf-8"
+    });
+
+    const fileHandle = await window.showSaveFilePicker();
+    const fileStream = await fileHandle.createWritable();
+
+    await fileStream.write(blob);
+    await fileStream.close();
+}
 
 // Initial event binding.
 
@@ -482,6 +512,14 @@ $(document).ready(function () {
                 obj.remove();
             }
         });
+    });
+
+    //Attach even listener to add-obj-labeling form
+    $('.submit-form').on('click', function(e) {
+        const form = $('.object-label-form');
+        const json = convertFormToJSON(form);
+        console.log(json);
+        writeSaveFile(json);
     });
 
     $('input[type=radio][name=tool_switching]').change(function() {
