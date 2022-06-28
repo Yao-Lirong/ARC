@@ -21,6 +21,9 @@ var COPY_PASTE_DATA = new Array();
 // name of the current file
 var CURRENT_FILE_NAME = "";
 
+// contains array that stores the objects of every input canvas
+var INPUT_OBJECT_LIST = [];
+
 // Cosmetic.
 var EDITION_GRID_HEIGHT = 500;
 var EDITION_GRID_WIDTH = 500;
@@ -28,6 +31,47 @@ var MAX_CELL_SIZE = 100;
 
 // Set this value to which input you want to start from
 var index = 1;
+
+
+// To establish a local storage system
+class LocalStorageService {
+    #keys = {
+      inputs: "inputs",
+    };
+
+    // Constructs storage
+    constructor() {
+      this.storage = window.localStorage;
+    }
+
+    addObjects(object) {
+      console.log(object);
+      const objects = this.getObjects();
+      objects.push(object);
+      this.setObjects(objects);
+    }
+
+    getObjects() {
+      return JSON.parse(this.storage.getItem(this.#keys.inputs)) || [];
+    }
+
+    setObjects(objects) {
+      this.storage.setItem(this.#keys.inputs, JSON.stringify(objects));
+    }
+
+    removePerson(objects) {
+      const object = this.getObjects();
+      const index = object.indexOf(objects);
+      object.splice(index, 1);
+      this.setObjects(objects);
+    }
+
+    clear() {
+      this.storage.clear();
+    }
+  }
+
+  const STORAGE = new LocalStorageService();
 
 /**
  * Restarts the output grid
@@ -444,6 +488,13 @@ async function writeSaveFile(json) {
     await fileStream.close();
 }
 
+
+// To clear local storage when page is refreshed
+window.onbeforeunload = function (e) {
+    STORAGE.clear();
+};
+
+
 // Initial event binding.
 
 $(document).ready(function () {
@@ -519,7 +570,9 @@ $(document).ready(function () {
         const form = $('.object-label-form');
         const json = convertFormToJSON(form);
         console.log(json);
-        writeSaveFile(json);
+        STORAGE.addObjects(json);
+        console.log(JSON.stringify(STORAGE.getObjects()));
+        //writeSaveFile(json);
     });
 
     $('input[type=radio][name=tool_switching]').change(function() {
