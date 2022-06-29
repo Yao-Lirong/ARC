@@ -594,6 +594,7 @@ $(document).ready(function () {
   $(".submit-form").on("click", function (e) {
     writeSaveFile(INPUT_OBJECT_LIST);
     INPUT_OBJECT_LIST = [];
+    $('.overall-json').text(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
     //console.log(INPUT_OBJECT_LIST);
   });
 
@@ -604,6 +605,7 @@ $(document).ready(function () {
     form[0].reset();
     console.log(json);
     STORAGE.addObjects(json);
+    $('.current-input').text(JSON.stringify(STORAGE.getObjects(), null, 4));
   });
 
   $(".next-input-canvas").on("click", function (e) {
@@ -615,7 +617,9 @@ $(document).ready(function () {
     } else {
       INPUT_OBJECT_LIST.push(STORAGE.getObjects());
       STORAGE.clear();
+      $('.current-input').text('');
     }
+    $('.overall-json').text(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
     console.log(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
   });
 

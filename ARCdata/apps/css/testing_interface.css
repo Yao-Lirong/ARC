@@ -280,3 +280,15 @@ input, button {
 .json-preview {
     float: left;
 }
+
+.json-preview h3 {
+    text-decoration: underline;
+}
+
+.current-input-container pre {
+    color: green;
+}
+
+.overall-json-container pre {
+    color: darkred;
+}
