@@ -276,3 +276,7 @@ input, button {
     background-color: darkgray;
     padding: 5px;
 }
+
+.json-model {
+    float: left;
+}
