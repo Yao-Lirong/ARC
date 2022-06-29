@@ -18,67 +18,6 @@
     />
   </head>
   <body>
-    <!-- <script>
-      class LocalStorageService {
-        #keys = {
-          persons: "persons",
-        };
-
-        constructor() {
-          this.storage = window.localStorage;
-        }
-
-        addPerson(person) {
-          const persons = this.getPersons();
-          persons.push(person);
-          this.setPersons(persons);
-        }
-
-        getPersons() {
-          return JSON.parse(this.storage.getItem(this.#keys.persons)) || [];
-        }
-
-        getPerson(id) {
-          const persons = this.getPersons();
-          return persons.find((person) => person.id === id);
-        }
-
-        setPersons(persons) {
-          this.storage.setItem(this.#keys.persons, JSON.stringify(persons));
-        }
-
-        removePerson(person) {
-          const persons = this.getPersons();
-          const index = persons.indexOf(person);
-          persons.splice(index, 1);
-          this.setPersons(persons);
-        }
-
-        clear() {
-          this.storage.clear();
-        }
-      }
-
-      const storageService = new LocalStorageService();
-      const person = {
-        id: "1",
-        name: "John",
-        age: "20",
-      };
-
-      const person2 = {
-          id: "2",
-          name: "Mary",
-          age: "19",
-      }
-
-      storageService.addPerson(person);
-      storageService.addPerson(person2);
-
-      const persons = storageService.getPersons();
-      console.log(JSON.stringify(persons));
-    </script> -->
-
     <!--To load the introduction screen-->
     <div id="modal_bg">
       <div id="modal">
@@ -201,16 +140,19 @@
 
               <br />
 
-              <input type="button" value="New Input" class="next-input-canvas" />
-              <input type="button" value="Add Object" class="add-new-obj" />
+              <input
+                type="button"
+                value="Add Objects To JSON File"
+                class="next-input-canvas"
+              />
+              <input type="button" value="Add Object To Preview" class="add-new-obj" />
               <input type="button" value="Export" class="submit-form" />
             </form>
           </div>
 
-
           <div class="json-preview">
             <div class="overall-json-container">
-            <h3>JSON Preview</h3>
+              <h3>JSON Preview<input type="button" value="Clear JSON File" class="clear-json-prev"></h3>
               <pre><p class="overall-json"></p></pre>
             </div>
           </div>
@@ -346,7 +288,7 @@
             </div>
 
             <!--To contain the objects that the user identifies-->
-            <div id="object_labeling">
+            <div id="object_labeling" style="display: none">
               <input
                 type="button"
                 id="add_object_btn"
@@ -362,18 +304,18 @@
             </div>
 
             <!--Will contain all the objects the user selects-->
-            <div id="object_list">
+            <div id="object_list" style="display: none;">
               <p class="object-title">Objects:</p>
               <ul class="object-list"></ul>
             </div>
           </div>
 
           <div class="json-preview">
-          <div class="current-input-container">
-            <h3>Current Input Preview</h3>
-        <pre><p class="current-input"></p></pre>
-      </div>
-    </div>
+            <div class="current-input-container">
+              <h3>Current Input Preview<input type="button" value="Clear All Objects" class="clear-objects-prev"></h3>
+              <pre><p class="current-input"></p></pre>
+            </div>
+          </div>
 
           <!--To display any messages-->
           <div id="error_display"></div>

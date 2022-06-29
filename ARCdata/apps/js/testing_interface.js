@@ -356,8 +356,8 @@ function randomTask() {
 
         infoMsg("Loaded task training/" + task["name"]);
         display_task_name(task["name"], task_index, tasks.length);
-      })
-      .error(function () {
+        $('.object-label-form')[0].reset();
+      }).error(function () {
         errorMsg("Error loading task");
       });
     }
@@ -502,7 +502,6 @@ async function writeSaveFile(json) {
     type: "application/json",
   });
 
-
   const fileHandle = await window.showSaveFilePicker();
   const fileStream = await fileHandle.createWritable();
 
@@ -510,7 +509,7 @@ async function writeSaveFile(json) {
   await fileStream.close();
 
   INPUT_OBJECT_LIST = [];
-    $('.overall-json').text(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
+  $(".overall-json").text(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
 }
 
 // To clear local storage when page is refreshed
@@ -596,12 +595,14 @@ $(document).ready(function () {
 
   //Attach even listener to add-obj-labeling form
   $(".submit-form").on("click", function (e) {
-    writeSaveFile(INPUT_OBJECT_LIST).then(_ => {
-    INPUT_OBJECT_LIST = [];
-    $('.overall-json').text(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
-    }).catch (e => {
-        return
-    });
+    writeSaveFile(INPUT_OBJECT_LIST)
+      .then((_) => {
+        INPUT_OBJECT_LIST = [];
+        $(".overall-json").text(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
+      })
+      .catch((e) => {
+        return;
+      });
     //console.log(INPUT_OBJECT_LIST);
   });
 
@@ -612,11 +613,10 @@ $(document).ready(function () {
     form[0].reset();
     console.log(json);
     STORAGE.addObjects(json);
-    $('.current-input').text(JSON.stringify(STORAGE.getObjects(), null, 4));
+    $(".current-input").text(JSON.stringify(STORAGE.getObjects(), null, 4));
   });
 
   $(".next-input-canvas").on("click", function (e) {
-
     // checks if the local storage is empty
     // if local storage is empty, then return an empty json object
     if (STORAGE.length === 0) {
@@ -624,10 +624,20 @@ $(document).ready(function () {
     } else {
       INPUT_OBJECT_LIST.push(STORAGE.getObjects());
       STORAGE.clear();
-      $('.current-input').text('');
+      $(".current-input").text("");
     }
-    $('.overall-json').text(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
+    $(".overall-json").text(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
     console.log(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
+  });
+
+  $('.clear-json-prev').on('click', function(e) {
+    INPUT_OBJECT_LIST = [];
+    $('.overall-json').text(`${INPUT_OBJECT_LIST}`);
+  });
+
+  $('.clear-objects-prev').on('click', function(e) {
+    STORAGE.clear();
+    $('.current-input').text('');
   });
 
   $("input[type=radio][name=tool_switching]").change(function () {

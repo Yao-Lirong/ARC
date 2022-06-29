@@ -1,294 +1,295 @@
 body {
-    font-family: 'Open Sans', sans-serif;
-    min-width: 1410px;
+  font-family: "Open Sans", sans-serif;
+  min-width: 1410px;
 }
 
 #workspace {
-    width: 1410px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 1410px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #demonstration_examples_view {
-    float: left;
-    width: 450px;
-    margin: 10px;
-    margin-right: 5px;
-    background-color: #d5d5d5;
+  float: left;
+  width: 450px;
+  margin: 10px;
+  margin-right: 5px;
+  background-color: #d5d5d5;
 }
 
 #evaluation_view {
-    float: left;
-    width: 930px;
-    margin: 10px;
-    margin-left: 5px;
-    background-color: #d5d5d5;
-    min-height: 850px;
+  float: left;
+  width: 930px;
+  margin: 10px;
+  margin-left: 5px;
+  background-color: #d5d5d5;
+  min-height: 850px;
 }
 
 #evaluation-input-view {
-    float: left;
-    width: 400px;
-    margin: 10px;
+  float: left;
+  width: 400px;
+  margin: 10px;
 }
 
 #evaluation_output_editor {
-    float: left;
-    width: 500px;
-    margin-bottom: 0px;
+  float: left;
+  width: 500px;
+  margin-bottom: 0px;
 }
 
 #load_task_control_btns {
-    float: left;
-    margin-top: 10px;
-    margin-bottom: 0;
-    background: white;
-    width: 100%;
-    padding-top: 5px;
-    padding-bottom: 5px;
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 0;
+  background: white;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 #editor_grid_control_btns {
-    float: left;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background: white;
-    width: 100%;
-    padding-top: 5px;
-    padding-bottom: 5px;
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: white;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 #resize_control_btns {
-    width: 100%;
-    float:left;
-    margin-bottom: 10px;
+  width: 100%;
+  float: left;
+  margin-bottom: 10px;
 }
 
 #submit_solution_btn {
-    color: white;
-    border-radius: 4px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    background: rgb(28, 184, 65);
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  background: rgb(28, 184, 65);
 }
 
 #submit_solution_btn:active {
   background: blue;
 }
 
-button:focus {outline:0;}
+button:focus {
+  outline: 0;
+}
 
 #output_grid {
-
 }
 
 #toolbar {
-    float: left;
-    margin-left: 10px;
-    margin-top: 18px;
-    margin-bottom: 10px;
-    width: 100%;
-
+  float: left;
+  margin-left: 10px;
+  margin-top: 18px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 #symbol_picker {
-    float: left;
-    margin-left: 20px;
-    width: 100%;
+  float: left;
+  margin-left: 20px;
+  width: 100%;
 }
 
 .symbol_preview {
-    width: 25px;
-    height: 25px;
-    float: left;
+  width: 25px;
+  height: 25px;
+  float: left;
 }
 
 label {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
-input, button {
-    margin-left: 10px;
+input,
+button {
+  margin-left: 10px;
 }
 
 #resize_btn {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 /*Task demonstration*/
 
 .pair_preview {
-    height: 200px;
-    padding: 5px;
-    border-bottom: solid 1px #a1a1a1;
+  height: 200px;
+  padding: 5px;
+  border-bottom: solid 1px #a1a1a1;
 }
 .input_preview {
-    height: 200px;
-    width: 200px;
-    float: left;
+  height: 200px;
+  width: 200px;
+  float: left;
 }
 .output_preview {
-    height: 200px;
-    width: 200px;
-    float: left;
-    margin-left: 35px;
+  height: 200px;
+  width: 200px;
+  float: left;
+  margin-left: 35px;
 }
 
 .text {
-    text-align: center;
-    background: white;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
+  text-align: center;
+  background: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 #task_demo_header {
-    margin: 10px;
+  margin: 10px;
 }
 
 #modal_bg {
-    background-color: black;
-    width: 100%;
-    min-height: 10000px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
+  background-color: black;
+  width: 100%;
+  min-height: 10000px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
 
 #modal {
-    margin: auto;
-    background-color: white;
-    text-align: center;
-    padding: 100px;
-    width: 500px;
-    margin-top: 100px;
+  margin: auto;
+  background-color: white;
+  text-align: center;
+  padding: 100px;
+  width: 500px;
+  margin-top: 100px;
 }
 
 #modal input {
-    margin-left: 70px;
+  margin-left: 70px;
 }
 
 /*  New additions!  */
 
 #add_object_btn {
-    /* float: left; */
-    color: #a1a1a1;
-    background-color: rgb(58, 69, 65);
-    border-radius: 3px;
-    text-shadow: 1px 1px 2px gray;
-    margin-top: 10px;
+  /* float: left; */
+  color: #a1a1a1;
+  background-color: rgb(58, 69, 65);
+  border-radius: 3px;
+  text-shadow: 1px 1px 2px gray;
+  margin-top: 10px;
 }
 
 #object_list {
-    float: left;
-    margin-top: 10px;
-    margin-right: 200px;
-    margin-bottom: 10px;
-    min-width: 30%;
-    min-height: 100px;
-    border-style: solid;
-    border-color: 1px black;
+  float: left;
+  margin-top: 10px;
+  margin-right: 200px;
+  margin-bottom: 10px;
+  min-width: 30%;
+  min-height: 100px;
+  border-style: solid;
+  border-color: 1px black;
 }
 
 .object-list {
-    width: 100%;
+  width: 100%;
 }
 
 .list-item-obj {
-    width: 100%;
+  width: 100%;
 }
 
 .an-object {
-    display: inline-block;
-    margin-top: 10px;
-    width: fit-content;
-    background-color: gray;
-    color: black;
-    border-radius: 4px;
-    text-shadow: 0px 0px 2px white;
+  display: inline-block;
+  margin-top: 10px;
+  width: fit-content;
+  background-color: gray;
+  color: black;
+  border-radius: 4px;
+  text-shadow: 0px 0px 2px white;
 }
 
 .an-object-selected {
-    background-color: blanchedalmond !important;
+  background-color: blanchedalmond !important;
 }
 
 #object_labeling {
-    float: left;
+  float: left;
 }
 
 .remove-obj-check {
-    display: inline-block;
+  display: inline-block;
 }
 
 .object-title {
-    margin: 1px;
-    width: fit-content;
+  margin: 1px;
+  width: fit-content;
 }
 
 .object-label-form-container {
-    float: left;
-    text-align: center;
-    margin-top: 50px;
-    border: 1px solid black;
-    padding: 5px;
-    background-color: gray;
+  float: left;
+  text-align: center;
+  margin-top: 50px;
+  border: 1px solid black;
+  padding: 5px;
+  background-color: gray;
 }
 
 .form-headers {
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: underline; 
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .form-lengths ul {
-    list-style: none;
-    padding: 0px;
-    margin: 0px;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
 }
 
 .form-lengths {
-    background-color: darkslategray;
-    padding-bottom: 4px;
+  background-color: darkslategray;
+  padding-bottom: 4px;
 }
 
 .form-lengths li {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .form-colors {
-    margin-top: 20px;
-    background-color: darkgray;
-    padding-bottom: 4px;
+  margin-top: 20px;
+  background-color: darkgray;
+  padding-bottom: 4px;
 }
 
 .color-label {
-    font-weight: bold; 
-    text-decoration: underline; 
-    margin: 0px;
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 0px;
 }
 
 .misc-forms {
-    background-color: darkslategray;
-    padding-bottom: 4px;
+  background-color: darkslategray;
+  padding-bottom: 4px;
 }
 
 .type-and-pos-form {
-    background-color: darkgray;
-    padding: 5px;
+  background-color: darkgray;
+  padding: 5px;
 }
 
 .json-preview {
-    float: left;
+  float: left;
 }
 
 .json-preview h3 {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .current-input-container pre {
-    color: green;
+  color: green;
 }
 
 .overall-json-container pre {
-    color: darkred;
+  color: darkred;
 }
