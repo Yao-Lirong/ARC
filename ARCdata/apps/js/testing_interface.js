@@ -502,11 +502,15 @@ async function writeSaveFile(json) {
     type: "application/json",
   });
 
+
   const fileHandle = await window.showSaveFilePicker();
   const fileStream = await fileHandle.createWritable();
 
   await fileStream.write(blob);
   await fileStream.close();
+
+  INPUT_OBJECT_LIST = [];
+    $('.overall-json').text(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
 }
 
 // To clear local storage when page is refreshed
@@ -592,9 +596,12 @@ $(document).ready(function () {
 
   //Attach even listener to add-obj-labeling form
   $(".submit-form").on("click", function (e) {
-    writeSaveFile(INPUT_OBJECT_LIST);
+    writeSaveFile(INPUT_OBJECT_LIST).then(_ => {
     INPUT_OBJECT_LIST = [];
     $('.overall-json').text(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
+    }).catch (e => {
+        return
+    });
     //console.log(INPUT_OBJECT_LIST);
   });
 
