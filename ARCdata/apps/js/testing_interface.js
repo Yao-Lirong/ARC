@@ -497,7 +497,7 @@ function convertFormToJSON(form) {
 }
 
 async function writeSaveFile(json) {
-  const str = JSON.stringify(json);
+  const str = JSON.stringify(json, null, 4);
   const blob = new Blob([str], {
     type: "application/json",
   });
@@ -594,7 +594,7 @@ $(document).ready(function () {
   $(".submit-form").on("click", function (e) {
     writeSaveFile(INPUT_OBJECT_LIST);
     INPUT_OBJECT_LIST = [];
-    console.log(INPUT_OBJECT_LIST);
+    //console.log(INPUT_OBJECT_LIST);
   });
 
   // Adds a new object to the local storage
@@ -616,7 +616,7 @@ $(document).ready(function () {
       INPUT_OBJECT_LIST.push(STORAGE.getObjects());
       STORAGE.clear();
     }
-    console.log(JSON.stringify(INPUT_OBJECT_LIST));
+    console.log(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
   });
 
   $("input[type=radio][name=tool_switching]").change(function () {
