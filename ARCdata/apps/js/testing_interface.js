@@ -45,10 +45,27 @@ class LocalStorageService {
 
   addObjects(object) {
     console.log(object);
+    const obj = this.convertValuesObj(object);
     const objects = this.getObjects();
-    objects.push(object);
+    objects.push(obj);
     this.setObjects(objects);
     this.length++;
+  }
+
+  convertValuesObj(object) {
+      var obj = object;
+        for(var prop in obj){
+            if(obj.hasOwnProperty(prop) && obj[prop] !== null && !isNaN(obj[prop])){
+                obj[prop] = +obj[prop];   
+            }
+            else if(obj[prop] === 'false' || obj[prop] === 'true') {
+                (obj[prop] === 'false') ? obj[prop] = false : obj[prop] = true;
+            }
+            else if(obj[prop] === 'null') {
+                obj[prop] = null;
+            }
+        }
+    return obj;
   }
 
   getObjects() {
@@ -356,7 +373,8 @@ function randomTask() {
 
         infoMsg("Loaded task training/" + task["name"]);
         display_task_name(task["name"], task_index, tasks.length);
-        $('.object-label-form')[0].reset();
+        $('.current-input').text(JSON.stringify([{}], null, 4));
+        $('.overall-json').text(JSON.stringify([], null, 4));
       }).error(function () {
         errorMsg("Error loading task");
       });
@@ -624,7 +642,7 @@ $(document).ready(function () {
     } else {
       INPUT_OBJECT_LIST.push(STORAGE.getObjects());
       STORAGE.clear();
-      $(".current-input").text("");
+      $('.current-input').text(JSON.stringify([{}], null, 4));
     }
     $(".overall-json").text(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
     console.log(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
@@ -632,12 +650,12 @@ $(document).ready(function () {
 
   $('.clear-json-prev').on('click', function(e) {
     INPUT_OBJECT_LIST = [];
-    $('.overall-json').text(`${INPUT_OBJECT_LIST}`);
+    $('.overall-json').text(JSON.stringify([], null, 4));
   });
 
   $('.clear-objects-prev').on('click', function(e) {
     STORAGE.clear();
-    $('.current-input').text('');
+    $('.current-input').text(JSON.stringify([{}], null, 4));
   });
 
   $("input[type=radio][name=tool_switching]").change(function () {
