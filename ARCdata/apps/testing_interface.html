@@ -48,17 +48,7 @@
       <div id="evaluation_view">
         <!--Contains the problem (the grid with the input)-->
         <div id="evaluation-input-view">
-          <div class="text">
-            Test input grid
-            <span id="current_test_input_id_display">0</span>/<span
-              id="total_test_input_count_display"
-              >0</span
-            >
-            <button onclick="nextTestInput()">Next test input</button>
-          </div>
 
-          <!--Contains the input canvas-->
-          <div id="evaluation_input" class="selectable_grid"></div>
 
           <div class="object-label-form-container">
             <h3>Form for labeling objects</h3>
@@ -78,10 +68,10 @@
 
                 <div class="form-position" style="margin-top: 10px">
                   <label for="xs">The x-position</label>
-                  <input type="number" name="xs" style="width: 40px" />
+                  <input type="number" name="xs" style="width: 40px" value = "0"/>
 
                   <label for="ys">The y-position</label>
-                  <input type="number" name="ys" style="width: 40px" />
+                  <input type="number" name="ys" style="width: 40px" value = "0"/>
                 </div>
               </div>
 
@@ -124,18 +114,18 @@
                 <p class="form-headers">Misc</p>
 
                 <label for="layer">layer</label>
-                <input type="number" name="layer" style="width: 40px" />
+                <input type="number" name="layer" style="width: 40px" value = "1"/>
 
                 <label for="outbound">outbound</label>
-                <select name="outbound" class="outbound-form">
+                <select name="outbound" class="outbound-form" value = "false">
                   <option value="true">true</option>
-                  <option value="false">false</option>
+                  <option value="false" selected>false</option>
                 </select>
                 <br />
                 <br />
 
                 <label for="bitmap">bitmap</label>
-                <input type="text" name="bitmap" style="width: 40px" />
+                <input type="text" name="bitmap" style="width: 40px" value = "null" />
               </div>
 
               <br />
@@ -156,6 +146,21 @@
               <pre><p class="overall-json"></p></pre>
             </div>
           </div>
+
+          <div class="text">
+            Test input grid
+            <span id="current_test_input_id_display">0</span>/<span
+              id="total_test_input_count_display"
+              >0</span
+            >
+            <button onclick="nextTestInput()">Next test input</button>
+          </div>
+
+          <!--Contains the input canvas-->
+          <div id="evaluation_input" class="selectable_grid"></div>
+
+
+          
         </div>
 
         <!--Contains the tools and interactive canvas to create/solve-->
@@ -182,6 +187,13 @@
             <p>
               <label id="task_name"> Task name: </label>
             </p>
+          </div>
+
+          <div class="json-preview">
+            <div class="current-input-container">
+              <h3>Current Input Preview<input type="button" value="Clear All Objects" class="clear-objects-prev"></h3>
+              <pre><p class="current-input"></p></pre>
+            </div>
           </div>
 
           <!--Table for editing (to load everything below Load task JSON)-->
@@ -310,12 +322,6 @@
             </div>
           </div>
 
-          <div class="json-preview">
-            <div class="current-input-container">
-              <h3>Current Input Preview<input type="button" value="Clear All Objects" class="clear-objects-prev"></h3>
-              <pre><p class="current-input"></p></pre>
-            </div>
-          </div>
 
           <!--To display any messages-->
           <div id="error_display"></div>

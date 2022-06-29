@@ -229,7 +229,7 @@ button {
 .object-label-form-container {
   float: left;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 10px;
   border: 1px solid black;
   padding: 5px;
   background-color: gray;
@@ -279,7 +279,7 @@ button {
 }
 
 .json-preview {
-  float: left;
+  float: unset;
 }
 
 .json-preview h3 {
