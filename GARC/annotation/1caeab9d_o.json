@@ -1,0 +1,116 @@
+[
+    [
+        {
+            "type": "rectangle",
+            "xs": 1,
+            "ys": 3,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "color": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "rectangle",
+            "xs": 4,
+            "ys": 3,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "color": 4,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "rectangle",
+            "xs": 7,
+            "ys": 3,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "color": 1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        }
+    ],
+    [
+        {
+            "type": "rectangle",
+            "xs": 1,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 2,
+            "color": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "rectangle",
+            "xs": 4,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 2,
+            "color": 1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "rectangle",
+            "xs": 7,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 2,
+            "color": 4,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        }
+    ],
+    [
+        {
+            "type": "rectangle",
+            "xs": 1,
+            "ys": 2,
+            "len": 0,
+            "xlen": 1,
+            "ylen": 2,
+            "color": 1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "rectangle",
+            "xs": 3,
+            "ys": 2,
+            "len": 0,
+            "xlen": 1,
+            "ylen": 2,
+            "color": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "rectangle",
+            "xs": 6,
+            "ys": 2,
+            "len": 0,
+            "xlen": 1,
+            "ylen": 2,
+            "color": 4,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        }
+    ]
+]

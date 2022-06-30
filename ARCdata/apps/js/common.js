@@ -128,6 +128,12 @@ function fillJqGridWithData(jqGrid, dataGrid) {
     for (var i = 0; i < height; i++){
         var row = $(document.createElement('div'));
         row.addClass('row');
+        // add Y axis tick for each row
+        var cell = $(document.createElement('div'));
+        cell.addClass('cell');
+        cell.addClass('tick');
+        cell.text(String(height - i - 1));
+        row.append(cell);
         for (var j = 0; j < width; j++){
             var cell = $(document.createElement('div'));
             cell.addClass('cell');
@@ -138,6 +144,26 @@ function fillJqGridWithData(jqGrid, dataGrid) {
         }
         jqGrid.append(row);
     }
+    // render x axis for easier labelling
+    var xaxis = $(document.createElement('div'));
+    xaxis.addClass('row');
+    var cell = $(document.createElement('div')); // dumb placeholder 
+    cell.addClass('cell');
+    cell.addClass('tick');
+    xaxis.append(cell)
+    for (var j = 0; j < width; j++){
+        var cell = $(document.createElement('div'));
+        cell.addClass('cell');
+        cell.addClass('tick');
+        cell.text(String(j));
+        // setCellSymbol(cell, dataGrid.grid[height][j]);
+        xaxis.append(cell);
+    }
+    jqGrid.append(xaxis);
+}
+
+function addYAxis(row) {
+
 }
 
 /**

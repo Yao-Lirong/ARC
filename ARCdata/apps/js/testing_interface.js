@@ -250,12 +250,12 @@ function fillPairPreview(pairId, inputGrid, outputGrid) {
   }
 
   fillJqGridWithData(jqInputGrid, inputGrid);
-  fitCellsToContainer(jqInputGrid, inputGrid.height, inputGrid.width, 200, 200);
+  fitCellsToContainer(jqInputGrid, inputGrid.height+1, inputGrid.width+1, 200, 200);
   fillJqGridWithData(jqOutputGrid, outputGrid);
   fitCellsToContainer(
     jqOutputGrid,
-    outputGrid.height,
-    outputGrid.width,
+    outputGrid.height + 1,
+    outputGrid.width + 1,
     200,
     200
   );
@@ -304,9 +304,9 @@ function display_task_name(task_name, task_index, number_of_tasks) {
   big_space = "&nbsp;".repeat(4);
   document.getElementById("task_name").innerHTML =
     "Task name:" +
-    big_space +
+    // big_space +
     task_name +
-    big_space +
+    // big_space +
     (task_index === null
       ? ""
       : String(task_index) + " out of " + String(number_of_tasks));
@@ -434,7 +434,7 @@ function submitSolution() {
 function fillTestInput(inputGrid) {
   jqInputGrid = $("#evaluation_input");
   fillJqGridWithData(jqInputGrid, inputGrid);
-  fitCellsToContainer(jqInputGrid, inputGrid.height, inputGrid.width, 400, 400);
+  fitCellsToContainer(jqInputGrid, inputGrid.height+1, inputGrid.width+1, 400, 400);
 }
 
 /**
@@ -628,7 +628,7 @@ $(document).ready(function () {
   $(".add-new-obj").on("click", function (e) {
     const form = $(".object-label-form");
     const json = convertFormToJSON(form);
-    form[0].reset();
+    // form[0].reset();
     console.log(json);
     STORAGE.addObjects(json);
     $(".current-input").text(JSON.stringify(STORAGE.getObjects(), null, 4));

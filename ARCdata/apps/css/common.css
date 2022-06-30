@@ -7,6 +7,14 @@
     background-color: #000;
 }
 
+/* Class for x and y axis tick */
+.tick {
+    border-left: 1px solid #555;
+    border-top: 1px solid #555;
+    float: left;
+    background-color: #ddd;
+}
+
 .row {
     clear: both;
 }
