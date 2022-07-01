@@ -34,10 +34,12 @@ class obj():
 		type : str
 			type of this object, can be 
 			- 'dot'
-			- line ('vertical', 'parallel', 
+			- line (
+			  'vertical': vertical line starts from lower end pointing to higher end
+			  'parallel': parallel line starts from left pointing to right
 			  'diagonal_ur': diagonal line pointing upper right, 
 			  'diagonal_lr': diagonal line pointing lower right), 
-			- 'rectangle', starts from upper-left to lower-right
+			- 'rectangle', starts from lower-left to upper-right
 			- 'cheat' : bitmap, starts from upper-left to lower-right
 		xs : int
 			x coordinate of the starting point
