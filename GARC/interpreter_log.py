@@ -19,7 +19,7 @@ SERVER = True
 ENABLE_PROFILER = False
 ENABLE_LEGACY = False
 # parent_dir = os.path.dirname(os.getcwd())
-arc_data_dir = "/home/ly373/ARC/ARCdata/data/training/" if SERVER \
+arc_dir = "/home/ly373/ARC/" if SERVER \
 			   else os.path.join(os.getcwd(), "ARCdata\\data\\training\\")
 # RUNTIME = 5.0
 
@@ -41,17 +41,17 @@ def read_task(taskname, index, inpt = True):
 	Returns input if `inpt` is True, returns output if it's False
 	"""
 	filename = taskname + ".json"
-	f = open(arc_data_dir + filename)
-	j = json.load(f)
+	with open(arc_dir + "ARCdata/data/training/" + filename) as f:
+		j = json.load(f)
 	datas = j["train"]
 	data = datas[index]
 	return data["input"] if inpt else data["output"]
 
 
-dots = ["dot"]
-lines = ["vertical", "parallel", "diagonal_ur", "diagonal_lr"]
-recs = ["rectangle"]
-types = dots + lines + recs
+tp_dots = ["dot"]
+tp_lines = ["vertical", "parallel", "diagonal_ur", "diagonal_lr"]
+tp_recs = ["rectangle"]
+types = tp_dots + tp_lines + tp_recs
 
 # functions to create the objects
 def dot(xlen, ylen, x, y, c):
@@ -145,6 +145,14 @@ class Astar():
 		self.total_iterations = 0
 		self.solution_program = None
 
+	def solution_by_type(self, j):
+		sol = {}
+		sol["dot"] = list(filter(lambda o : o["type"] in tp_dots, j))
+		sol["line"] = list(filter(lambda o : o["type"] in tp_lines, j))
+		sol["rec"] = list(filter(lambda o : o["type"] in tp_recs, j))
+		sol["bitmap"] = list(filter(lambda o : o["type"] == "cheat", j))
+		return sol
+
 	def search_aux(self, target):
 		# q may store states with the same canvas but of different cost
 		# vis only records whether a state with that canvas is visited or not, 
@@ -206,10 +214,10 @@ class Astar():
 
 		def get_desired_cost(prog):
 			res = 0
-			res += prog["dot"] * dot_cost
-			res += prog["line"] * line_cost
-			res += prog["rec"] * rec_cost
-			res = reduce(lambda x,y : x + bitmap_cost(y), prog["bitmap"], res)
+			res += len(prog["dot"]) * dot_cost
+			res += len(prog["line"]) * line_cost
+			res += len(prog["rec"]) * rec_cost
+			res = reduce(lambda x,y : x + bitmap_cost(y["bitmap"]), prog["bitmap"], res)
 			return res
 		
 		desired_cost = get_desired_cost(self.solution_program)
@@ -235,7 +243,7 @@ class Astar():
 		obj_masks = []
 
 		for tp in types:
-			if tp in dots:
+			if tp in tp_dots:
 				for x in range(xlen):
 					for y in range(ylen):
 						for c in target_colors:
@@ -244,7 +252,7 @@ class Astar():
 							obj_masks.append(this_mask)
 							objs.append(this_obj)
 							obj_commands.append(this_command)
-			if tp in lines:
+			if tp in tp_lines:
 				for l in range(1, maxlen+1):
 					for x in range(xlen):
 						for y in range(ylen):
@@ -265,7 +273,7 @@ class Astar():
 								obj_masks.append(this_mask)
 								objs.append(this_obj)
 								obj_commands.append(this_command)
-			elif tp in recs:
+			elif tp in tp_recs:
 				for x in range(xlen):
 					for y in range(ylen):
 						for xl in range(1, xlen - x + 1):
@@ -438,8 +446,12 @@ class Astar():
 	def search_one(self, taskname, tasknum, isinput):
 		
 		canvas = np.array(read_task(taskname, tasknum, isinput))
-		sol = __import__("p_" + taskname + ("_i" if isinput else "_o"))
-		self.solution_program = sol.desired_programs[tasknum]
+		with open(arc_dir + "GARC/annotation/" + taskname + ("_i" if isinput else "_o") + ".json") as f:
+			sol_json = json.load(f)
+		# sol = __import__("p_" + taskname + ("_i" if isinput else "_o"))
+
+		self.solution_program = self.solution_by_type(sol_json[tasknum])
+
 
 		canvas = array_to_canvas(canvas)
 		display(canvas)
@@ -510,6 +522,8 @@ if __name__ == "__main__":
 	# search_one(TASKNAME, TASKNUM, ISINPUT)
 
 	TASKNAME, TASKNUM, ISINPUT = "0a938d79", 0, True
+
+	TASKNAME, TASKNUM, ISINPUT = "1caeab9d", 0, True
 	
 	alpha, theta = 0.0009118819655545162, [14.0, 15.0, 15.0, 11.0]
 	theta = list(np.multiply(-1, theta))
@@ -524,65 +538,3 @@ if __name__ == "__main__":
 	print("\n\n\n\n\n")
 	astar = Astar(alpha, theta)
 	astar.search_one(TASKNAME, TASKNUM, ISINPUT)
-
-
-
-
-
-
-
-
-
-
-
-"""
-def search_multiple(times = 20):
-	
-	canvas = np.array(read_task(TASKNAME, TASKNUM, ISINPUT))
-	sol = __import__("p_"+TASKNAME+"_"+str(TASKNUM))
-
-	canvas = array_to_canvas(canvas)
-	display(canvas)
-
-	def draw_random_alpha_theta():
-		alpha_range = list(range(-10, 5))
-		log_theta_range = list(range(20))
-		self.alpha = np.exp(random.choice(alpha_range))
-		log_thetas = [random.choice(log_theta_range) for _ in range(4)]
-		self.theta = list(map(lambda t : t - logsumexp(log_thetas), log_thetas))
-		self.theta = list(np.multiply(-1, self.theta))
-		print("Alpha: ", self.alpha)
-		print("Theta Probabilities: ", end="")
-		print(["{0:0.2f}".format(t) for t in np.exp(self.theta) * 100])
-		# we now have the log probability, but -log probability is the cost
-		self.theta = list(np.multiply(-1, self.theta))
-		print("Theta Costs: ", end="")
-		print(["{0:0.2f}".format(t) for t in self.theta])
-	
-	sc = []
-	ti = []
-	sr = []
-	pc = []
-
-	print("total iterations, prediction cost, solution rank, solution cost")
-
-	for i in range(times):
-		draw_random_alpha_theta()
-		global self.total_iterations
-		self.total_iterations = 0
-		predictions, solution_cost = Astar(canvas)
-		
-		sorted_prediction = sorted_states_by_command_cost(predictions)
-		solution_rank = -1
-		for j in range(len(sorted_prediction)):
-			if sorted_prediction[j].command_cost == solution_cost:
-				solution_rank = j+1
-		
-		sc.append(solution_cost)
-		ti.append(self.total_iterations)
-		sr.append(solution_rank)
-		pc.append(sorted_prediction[0].command_cost)
-
-		print(ti[i], pc[i], sr[i], sc[i])
-
-"""
