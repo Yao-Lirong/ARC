@@ -114,6 +114,11 @@ function fitCellsToContainer(jqGrid, height, width, containerHeight, containerWi
     size = Math.min(MAX_CELL_SIZE, size);
     jqGrid.find('.cell').css('height', size + 'px');
     jqGrid.find('.cell').css('width', size + 'px');
+    if (size > 20) {
+        jqGrid.find('.tick').css('font-size', (20 - 3) + 'px');
+    } else {
+    jqGrid.find('.tick').css('font-size', (size - 3) + 'px');
+    }
 }
 
 /**
