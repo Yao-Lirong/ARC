@@ -11,6 +11,12 @@
 
 */
 
+//dummy function
+function testForPath() {
+    const val = typeof $('.load_task').attr('value');
+    console.log(val);
+}
+
 // Internal state.
 var CURRENT_INPUT_GRID = new Grid(3, 3);
 var CURRENT_OUTPUT_GRID = new Grid(3, 3);
@@ -339,7 +345,7 @@ function loadTaskFromFile(e) {
     }
     loadJSONTask(train, test);
 
-    $("#load_task_file_input")[0].value = "";
+    //$("#load_task_file_input")[0].value = "";
     display_task_name(file.name, null, null);
   };
 
@@ -575,7 +581,7 @@ $(document).ready(function () {
   });
 
   $(".load_task").on("click", function (event) {
-    event.target.value = "";
+    //event.target.value = "";
   });
 
   // Attaching the event listener inside

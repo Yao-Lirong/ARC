@@ -1,0 +1,58 @@
+[
+    [
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 0,
+            "len": 2,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        }
+    ],
+    [
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 0,
+            "len": 3,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        }
+    ],
+    [
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 0,
+            "len": 1,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 7,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        }
+    ],
+    [
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 0,
+            "len": 4,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 8,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        }
+    ]
+]
