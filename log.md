@@ -334,3 +334,25 @@ Tasks to do:
 - Try to output Kaggle solution's functions
 - Learn web programming as to build the annotation interface
 - Create a pipeline to produce results and visualize results. 
+
+### 2022-07-02
+
+When we do the labelling, we should think input, output; training example, and testing example all jointly. Label the objects as they will be useful in helping the machines to solve the problem. That is, the labelling should be consistent across all training, testing, input, and output. 
+
+We should change the bitmap implementation from monochromatic to multichromatic. 
+
+The final metric of how good our parser / hyperparameters are should be two factors: 1. time spent to find the desired answer 2. rank of the desired answer. 
+
+When one canvas can be interpreted in two or more ways, we can create multiple json files, each contains an interpretation. We consider the result is found as long as one of the desired result is found. 
+
+A few examples discussed:
+
+- ded97339: can be interpreted two lines cross at (6,6) so it's (1, 6) to (6,6) then (6,0) to (6,6). The vertical line is of length 7, parallel line is of length 6. Or this can be interpreted as vertical line of length 6, parallel line of length 5, and there is a dot at (6,6)
+- e179c5f4: The first example should be diagonal lines instead of single dots, so to be consistent with other training examples. 
+- 1caeab9d: all these should be interpreted as bitmaps so to be consistent with testing example 
+- 31aa019c: All these dots should be interpreted as dots instead of a single bitmap, because this way it helps the program to solve input to output. 
+- 228f6490: a bitmap onto gray rectangle 
+- 444801d8: black dot onto blue rectangle 
+- 150deff5: interpret input canvas as rectangles of 2x2 and 3x1 so to be consistent with testing example 
+- 6150a2bd, 62c24649: these kinds of problems tell us that we need multichromatic bitmaps
+
