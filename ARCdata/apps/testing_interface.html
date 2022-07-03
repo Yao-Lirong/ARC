@@ -101,10 +101,50 @@
               </div>
 
               <div class="form-colors">
-                <label for="color" class="color-label">Color of Object:</label>
+                <label for="color" class="form-color-picker">Color of Object:</label>
                 <br />
                 <br />
-                <select name="color">
+                <!--The color options available to choose from-->
+                <div class="symbol_picker form-color-picker">
+                  <div class="symbol_preview symbol_0" symbol="0"></div>
+                  <div
+                    class="symbol_preview symbol_1 symbol-form"
+                    symbol="1"
+                  ></div>
+                  <div
+                    class="symbol_preview symbol_2 symbol-form"
+                    symbol="2"
+                  ></div>
+                  <div
+                    class="symbol_preview symbol_3 symbol-form"
+                    symbol="3"
+                  ></div>
+                  <div
+                    class="symbol_preview symbol_4 symbol-form"
+                    symbol="4"
+                  ></div>
+                  <div
+                    class="symbol_preview symbol_5 symbol-form"
+                    symbol="5"
+                  ></div>
+                  <div
+                    class="symbol_preview symbol_6 symbol-form"
+                    symbol="6"
+                  ></div>
+                  <div
+                    class="symbol_preview symbol_7 symbol-form"
+                    symbol="7"
+                  ></div>
+                  <div
+                    class="symbol_preview symbol_8 symbol-form"
+                    symbol="8"
+                  ></div>
+                  <div
+                    class="symbol_preview symbol_9 symbol-form"
+                    symbol="9"
+                  ></div>
+                </div>
+                <!-- <select name="color">
                   <option value="0">Black (0)</option>
                   <option value="1">Cobalt (1)</option>
                   <option value="2">Red (2)</option>
@@ -115,7 +155,7 @@
                   <option value="7">Orange (7)</option>
                   <option value="8">Sky (8)</option>
                   <option value="9">Brown (9)</option>
-                </select>
+                </select> -->
               </div>
 
               <div class="misc-forms">
@@ -165,12 +205,13 @@
           <div class="json-preview">
             <div class="overall-json-container">
               <h3>
-                JSON Preview<input
+                JSON Preview
+              </h3>
+              <input
                   type="button"
                   value="Clear JSON File"
                   class="clear-json-prev"
                 />
-              </h3>
               <pre><p class="overall-json"></p></pre>
             </div>
           </div>
@@ -206,8 +247,6 @@
               value="Browse..."
               onclick="document.getElementById('load_task_file_input').click();"
             />
-
-            <input type="button" value="test" onclick="testForPath();" />
 
             <button onclick="randomTask()" id="random_task_btn">
               Next Task
@@ -317,20 +356,20 @@
             </div>
 
             <!--The color options avvailable to choose from-->
-            <div id="symbol_picker">
+            <div class="symbol_picker">
               <div
-                class="symbol_preview symbol_0 selected-symbol-preview"
+                class="symbol_preview symbol_0 selected-symbol-preview interactive"
                 symbol="0"
               ></div>
-              <div class="symbol_preview symbol_1" symbol="1"></div>
-              <div class="symbol_preview symbol_2" symbol="2"></div>
-              <div class="symbol_preview symbol_3" symbol="3"></div>
-              <div class="symbol_preview symbol_4" symbol="4"></div>
-              <div class="symbol_preview symbol_5" symbol="5"></div>
-              <div class="symbol_preview symbol_6" symbol="6"></div>
-              <div class="symbol_preview symbol_7" symbol="7"></div>
-              <div class="symbol_preview symbol_8" symbol="8"></div>
-              <div class="symbol_preview symbol_9" symbol="9"></div>
+              <div class="symbol_preview symbol_1 interactive" symbol="1"></div>
+              <div class="symbol_preview symbol_2 interactive" symbol="2"></div>
+              <div class="symbol_preview symbol_3 interactive" symbol="3"></div>
+              <div class="symbol_preview symbol_4 interactive" symbol="4"></div>
+              <div class="symbol_preview symbol_5 interactive" symbol="5"></div>
+              <div class="symbol_preview symbol_6 interactive" symbol="6"></div>
+              <div class="symbol_preview symbol_7 interactive" symbol="7"></div>
+              <div class="symbol_preview symbol_8 interactive" symbol="8"></div>
+              <div class="symbol_preview symbol_9 interactive" symbol="9"></div>
             </div>
 
             <!--To contain the objects that the user identifies-->

@@ -90,16 +90,16 @@ button:focus {
   width: 100%;
 }
 
-#symbol_picker {
-  float: left;
-  margin-left: 20px;
-  width: 100%;
+.symbol_picker {
+  align-self: center;
+  width: fit-content;
 }
 
 .symbol_preview {
   width: 25px;
   height: 25px;
   float: left;
+  border: 1px solid black;
 }
 
 label {
@@ -260,6 +260,9 @@ button {
   margin-top: 20px;
   background-color: darkgray;
   padding-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .color-label {
@@ -284,6 +287,7 @@ button {
 
 .json-preview h3 {
   text-decoration: underline;
+  margin-bottom: 5px;
 }
 
 .current-input-container pre {

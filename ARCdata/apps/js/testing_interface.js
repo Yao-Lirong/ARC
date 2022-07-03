@@ -25,6 +25,8 @@ var CURRENT_TEST_PAIR_INDEX = 0;
 var COPY_PASTE_DATA = new Array();
 // name of the current file
 var CURRENT_FILE_NAME = "";
+// List of color(s) that were chosen by user on object form
+var LIST_OF_COLORS = [];
 
 // contains array that stores the objects of every input canvas
 var INPUT_OBJECT_LIST = [];
@@ -61,7 +63,7 @@ class LocalStorageService {
   convertValuesObj(object) {
       var obj = object;
         for(var prop in obj){
-            if(obj.hasOwnProperty(prop) && obj[prop] !== null && !isNaN(obj[prop])){
+            if(obj.hasOwnProperty(prop) && obj[prop] !== null && !isNaN(obj[prop]) && prop !== 'color'){
                 obj[prop] = +obj[prop];   
             }
             else if(obj[prop] === 'false' || obj[prop] === 'true') {
@@ -546,16 +548,32 @@ window.onbeforeunload = function (e) {
 $(document).ready(function () {
   //------------------------------------------------------------------------------
   //this part selects which symbol is picked (which color is picked)
-  $("#symbol_picker")
+  $(".symbol_picker")
     .find(".symbol_preview")
     .click(function (event) {
       symbol_preview = $(event.target);
-      $("#symbol_picker")
-        .find(".symbol_preview")
+      console.log(symbol_preview.parent().prop('className'));
+
+      // This if statement is to handle the logic of the object-form color picker
+      if (symbol_preview.parent().prop('className') === 'symbol_picker form-color-picker') {
+        symbol_preview.toggleClass('selected-symbol-preview');
+
+        // If the user selects/deselects a color from the form
+        if (symbol_preview.hasClass('selected-symbol-preview')) {
+          LIST_OF_COLORS.push(parseInt(symbol_preview.attr('symbol')));
+        } else {
+          var index = LIST_OF_COLORS.indexOf(parseInt(symbol_preview.attr('symbol')));
+          LIST_OF_COLORS.splice(index, 1);
+        }
+      }
+      else {
+      $(".symbol_picker")
+        .find(".symbol_preview.interactive")
         .each(function (i, preview) {
           $(preview).removeClass("selected-symbol-preview");
         });
       symbol_preview.addClass("selected-symbol-preview");
+      }
       // -----------------------------------------------------------------------------
 
       // For when the tool mode is either in select or group
@@ -625,6 +643,7 @@ $(document).ready(function () {
         $(".overall-json").text(JSON.stringify(INPUT_OBJECT_LIST, null, 4));
       })
       .catch((e) => {
+        console.log(e);
         return;
       });
     //console.log(INPUT_OBJECT_LIST);
@@ -633,7 +652,8 @@ $(document).ready(function () {
   // Adds a new object to the local storage
   $(".add-new-obj").on("click", function (e) {
     const form = $(".object-label-form");
-    const json = convertFormToJSON(form);
+    var json = convertFormToJSON(form);
+    json['color'] = LIST_OF_COLORS;
     // form[0].reset();
     console.log(json);
     STORAGE.addObjects(json);

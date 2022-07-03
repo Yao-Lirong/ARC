@@ -64,7 +64,7 @@
 }
 
 .selected-symbol-preview {
-    border: 2px solid orange;
+    border: 2px solid orange !important;
 }
 
 
