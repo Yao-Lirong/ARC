@@ -73,6 +73,11 @@ class LocalStorageService {
                 obj[prop] = null;
             }
         }
+        if (obj['bitmap'] !== null) {
+          var formattedBitmap = JSON.parse(obj['bitmap']);
+          console.log(formattedBitmap);
+          obj['bitmap'] = formattedBitmap;
+        }
     return obj;
   }
 
