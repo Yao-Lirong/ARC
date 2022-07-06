@@ -297,3 +297,8 @@ button {
 .overall-json-container pre {
   color: darkred;
 }
+
+textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
