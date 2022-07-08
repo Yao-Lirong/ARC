@@ -73,6 +73,11 @@ class LocalStorageService {
                 obj[prop] = null;
             }
         }
+        if (obj['bitmap'] !== null) {
+          var formattedBitmap = JSON.parse(obj['bitmap']);
+          console.log(formattedBitmap);
+          obj['bitmap'] = formattedBitmap;
+        }
     return obj;
   }
 
@@ -762,6 +767,22 @@ $(document).ready(function () {
           "Can only paste at a specific location; only select *one* cell as paste destination."
         );
       }
+    }
+  });
+
+  $('textarea').on('keydown', function(e) {
+    if (e.key == 'Tab') {
+      e.preventDefault();
+      var start = this.selectionStart;
+      var end = this.selectionEnd;
+  
+      // set textarea value to: text before caret + tab + text after caret
+      this.value = this.value.substring(0, start) +
+        "\t" + this.value.substring(end);
+  
+      // put caret at right position again
+      this.selectionStart =
+        this.selectionEnd = start + 1;
     }
   });
 });
