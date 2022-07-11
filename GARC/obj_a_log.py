@@ -39,10 +39,12 @@ class obj():
 			  'parallel': parallel line starts from left pointing to right
 			  'diagonal_ur': diagonal line pointing upper right, 
 			  'diagonal_lr': diagonal line pointing lower right), 
-			- 'rectangle', starts from lower-left to upper-right
+			- rectangle (
+			  'rectangle': filled rectangle starts from lower-left to upper-right
+			  'outline': unfilled rectangle starts from lower-left to upper-right), 
 			- 'cheat' : bitmap, starts from upper-left to lower-right
-		xs : int
-			x coordinate of the starting point
+		xs : int 
+			x coordinate of the starting point 
 		ys : int
 			y coordinate of the starting point
 		color : int
