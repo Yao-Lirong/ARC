@@ -1,0 +1,50 @@
+[
+    [
+        {
+            "type": "dot",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                1
+            ]
+        }
+    ],
+    [
+        {
+            "type": "dot",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                1
+            ]
+        }
+    ],
+    [
+        {
+            "type": "dot",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                1
+            ]
+        }
+    ]
+]
