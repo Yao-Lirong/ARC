@@ -356,3 +356,8 @@ A few examples discussed:
 - 150deff5: interpret input canvas as rectangles of 2x2 and 3x1 so to be consistent with testing example 
 - 6150a2bd, 62c24649: these kinds of problems tell us that we need multichromatic bitmaps
 
+### 2022-07-06
+
+We don't want to use cost as a hash to check the correctness of the program. At some point, we need to change this. We previously used cost to check correctness of the prediction because it gives some sort of a hash. Two solutions have the same cost regardless of the order in which objects were drawn. In this way, we don't have to care about if our ground-truth solutions have a different drawing order than the predicted result. 
+
+Another way to do this is to give a hash to each mask, each solution can be just considered as a mask. When we want to check whether two solutions are the same, we just have to check the hash of the list of these masks. 

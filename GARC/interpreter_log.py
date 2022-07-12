@@ -49,8 +49,8 @@ def read_task(taskname, index, inpt = True):
 
 
 tp_dots = ["dot"]
-tp_lines = ["vertical", "parallel", "diagonal_ur", "diagonal_lr"]
-tp_recs = ["rectangle"]
+tp_lines = ["vertical", "parallel", "diagonal_ur", "diagonal_ul"]
+tp_recs = ["rectangle", "outline"]
 types = tp_dots + tp_lines + tp_recs
 
 # functions to create the objects
@@ -63,45 +63,43 @@ def dot(xlen, ylen, x, y, c):
 
 def rectangle(xlen, ylen, x, y, xl, yl, c):
 	obj_canvas = np.zeros((xlen, ylen), dtype = int)
-	mask_canvas = np.array(obj_canvas, dtype = bool)
 	obj = np.full((xl,yl), c, dtype=int)
-	mask = np.array(obj, dtype = bool)
 	obj_canvas[x:x+xl, y:y+yl] = obj
-	mask_canvas[x:x+xl, y:y+yl] = mask
+	mask_canvas = np.array(obj_canvas, dtype = bool)
+	return obj_canvas, mask_canvas
+
+def outline(xlen, ylen, x, y, xl, yl, c):
+	obj_canvas = np.zeros((xlen, ylen), dtype = int)
+	obj_canvas[x:x+xl, y] = obj_canvas[x:x+xl, y+yl] = obj_canvas[x, y:y+yl] = obj_canvas[x+xl, y:y+yl] = c
+	mask_canvas = np.array(obj_canvas, dtype = bool)
 	return obj_canvas, mask_canvas
 
 def vertical_line(xlen, ylen, x, y, l, c):
 	obj_canvas = np.zeros((xlen, ylen), dtype = int)
-	mask_canvas = np.array(obj_canvas, dtype = bool)
 	obj = np.full((1,l), c, dtype = int)
-	mask = np.array(obj, dtype = bool)
 	obj_canvas[x:x+1, y:y+l] = obj
-	mask_canvas[x:x+1, y:y+l] = mask
+	mask_canvas = np.array(obj_canvas, dtype = bool)
 	return obj_canvas, mask_canvas
 
 def parallel_line(xlen, ylen, x, y, l, c):
 	obj_canvas = np.zeros((xlen, ylen), dtype = int)
-	mask_canvas = np.array(obj_canvas, dtype = bool)
 	obj = np.full((l,1), c, dtype = int)
-	mask = np.array(obj, dtype = bool)
 	obj_canvas[x:x+l, y:y+1] = obj
-	mask_canvas[x:x+l, y:y+1] = mask
+	mask_canvas = np.array(obj_canvas, dtype = bool)
 	return obj_canvas, mask_canvas
 
 def diagonal_line_upright(xlen, ylen, x, y, l, c):
 	obj_canvas = np.zeros((xlen, ylen), dtype = int)
-	mask_canvas = np.array(obj_canvas, dtype = bool)
 	for i in range(l):
 		obj_canvas[x+i][y+i] = c
-		mask_canvas[x+i][y+i] = True
+	mask_canvas = np.array(obj_canvas, dtype = bool)
 	return obj_canvas, mask_canvas
 
-def diagonal_line_lowright(xlen, ylen, x, y, l, c):
+def diagonal_line_upperleft(xlen, ylen, x, y, l, c):
 	obj_canvas = np.zeros((xlen, ylen), dtype = int)
-	mask_canvas = np.array(obj_canvas, dtype = bool)
 	for i in range(l):
-		obj_canvas[x+i][y-i] = c
-		mask_canvas[x+i][y-i] = True
+		obj_canvas[x-i][y+i] = c
+	mask_canvas = np.array(obj_canvas, dtype = bool)
 	return obj_canvas, mask_canvas
 
 def hash_canvas(canvas):
@@ -267,9 +265,9 @@ class Astar():
 								elif tp == "diagonal_ur":
 									if l > xlen - x or l > ylen - y: continue
 									this_obj, this_mask = diagonal_line_upright(xlen, ylen, x, y, l, c)
-								elif tp == "diagonal_lr":
+								elif tp == "diagonal_ul":
 									if l > xlen - x or l > ylen - y: continue
-									this_obj, this_mask = diagonal_line_lowright(xlen, ylen, x, y, l, c)
+									this_obj, this_mask = diagonal_line_upperleft(xlen, ylen, x, y, l, c)
 								obj_masks.append(this_mask)
 								objs.append(this_obj)
 								obj_commands.append(this_command)
@@ -523,7 +521,7 @@ if __name__ == "__main__":
 
 	TASKNAME, TASKNUM, ISINPUT = "0a938d79", 0, True
 
-	TASKNAME, TASKNUM, ISINPUT = "1caeab9d", 0, True
+	TASKNAME, TASKNUM, ISINPUT = "025d127b", 0, True
 	
 	alpha, theta = 0.0009118819655545162, [14.0, 15.0, 15.0, 11.0]
 	theta = list(np.multiply(-1, theta))

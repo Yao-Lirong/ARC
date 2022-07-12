@@ -38,7 +38,7 @@ class obj():
 			  'vertical': vertical line starts from lower end pointing to higher end
 			  'parallel': parallel line starts from left pointing to right
 			  'diagonal_ur': diagonal line pointing upper right, 
-			  'diagonal_lr': diagonal line pointing lower right), 
+			  'diagonal_ul': diagonal line pointing upper left), 
 			- rectangle (
 			  'rectangle': filled rectangle starts from lower-left to upper-right
 			  'outline': unfilled rectangle starts from lower-left to upper-right), 
@@ -72,8 +72,8 @@ class obj():
 		if self.type == "dot": return "dot" + general
 		if self.type == "vertical": return "vertical line of length " + str(self.len) + general
 		if self.type == "parallel": return "parallel line of length " + str(self.len) + general
-		if self.type == "diagonal_ur" or self.type == "diagonal_lr": return "diagonal line of length " + str(self.len) + general
-		if self.type == "rectangle": return "rectangle of xlength " + str(self.xlen) + " ylength " + str(self.ylen) + general
+		if self.type == "diagonal_ur" or self.type == "diagonal_ul": return "diagonal line of length " + str(self.len) + general
+		if self.type == "rectangle" or self.type == "outline": return self.type + " of xlength " + str(self.xlen) + " ylength " + str(self.ylen) + general
 		if self.type == "new": return "a new object"
 		if self.type == "cheat": return "bitmap of xlength " + str(self.xlen) + " ylength " + str(self.ylen) + general
 
