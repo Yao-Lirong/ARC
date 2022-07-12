@@ -1,0 +1,74 @@
+[
+    [
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    1,
+                    1
+                ],
+                [
+                    2,
+                    1
+                ]
+            ],
+            "color": [
+                1,
+                2
+            ]
+        }
+    ],
+    [
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 1,
+            "ylen": 1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    8
+                ]
+            ],
+            "color": [
+                8
+            ]
+        }
+    ],
+    [
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    5,
+                    5
+                ],
+                [
+                    5,
+                    2
+                ]
+            ],
+            "color": [
+                5,
+                2
+            ]
+        }
+    ]
+]
