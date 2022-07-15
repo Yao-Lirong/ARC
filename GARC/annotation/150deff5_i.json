@@ -1,0 +1,190 @@
+[
+    [
+        {
+            "type": "cheat",
+            "xs": 2,
+            "ys": 2,
+            "len": 0,
+            "xlen": 6,
+            "ylen": 6,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    5,
+                    5,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    0
+                ],
+                [
+                    0,
+                    5,
+                    5,
+                    5,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                ],
+                [
+                    0,
+                    5,
+                    0,
+                    0,
+                    5,
+                    5
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    5,
+                    5,
+                    5
+                ]
+            ],
+            "color": [
+                5
+            ]
+        }
+    ],
+    [
+        {
+            "type": "cheat",
+            "xs": 1,
+            "ys": 1,
+            "len": 0,
+            "xlen": 6,
+            "ylen": 6,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                ],
+                [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    5
+                ],
+                [
+                    0,
+                    0,
+                    5,
+                    0,
+                    0,
+                    5
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    5,
+                    5,
+                    5
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    5,
+                    5,
+                    5
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    5,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                5
+            ]
+        }
+    ],
+    [
+        {
+            "type": "rectangle",
+            "xs": 4,
+            "ys": 2,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "rectangle",
+            "xs": 4,
+            "ys": 5,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "parallel",
+            "xs": 1,
+            "ys": 6,
+            "len": 3,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                2
+            ]
+        },
+        {
+            "type": "vertical",
+            "xs": 3,
+            "ys": 2,
+            "len": 3,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                2
+            ]
+        }
+    ]
+]

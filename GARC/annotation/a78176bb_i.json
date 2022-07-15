@@ -1,0 +1,176 @@
+[
+    [
+        {
+            "type": "diagonal_lr",
+            "xs": 0,
+            "ys": 9,
+            "len": 10,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 7,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "diagonal_lr",
+            "xs": 4,
+            "ys": 6,
+            "len": 2,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 5,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "diagonal_lr",
+            "xs": 5,
+            "ys": 6,
+            "len": 1,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 5,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        }
+    ],
+    [
+        {
+            "type": "diagonal_lr",
+            "xs": 5,
+            "ys": 5,
+            "len": 1,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 5,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "diagonal_lr",
+            "xs": 5,
+            "ys": 6,
+            "len": 2,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 5,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "diagonal_lr",
+            "xs": 5,
+            "ys": 7,
+            "len": 3,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 5,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "diagonal_lr",
+            "xs": 5,
+            "ys": 8,
+            "len": 4,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 5,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "diagonal_lr",
+            "xs": 5,
+            "ys": 9,
+            "len": 5,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 9,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        }
+    ],
+    [
+        {
+            "type": "diagonal_lr",
+            "xs": 0,
+            "ys": 8,
+            "len": 9,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "diagonal_lr",
+            "xs": 3,
+            "ys": 2,
+            "len": 1,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 5,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "diagonal_lr",
+            "xs": 3,
+            "ys": 3,
+            "len": 2,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 5,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "diagonal_lr",
+            "xs": 3,
+            "ys": 4,
+            "len": 3,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 5,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "diagonal_lr",
+            "xs": 3,
+            "ys": 6,
+            "len": 2,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 5,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        },
+        {
+            "type": "diagonal_lr",
+            "xs": 4,
+            "ys": 6,
+            "len": 1,
+            "xlen": -1,
+            "ylen": -1,
+            "color": 5,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null
+        }
+    ]
+]

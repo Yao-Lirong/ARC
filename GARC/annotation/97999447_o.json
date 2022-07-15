@@ -1,0 +1,159 @@
+[
+    [
+        {
+            "type": "cheat",
+            "xs": 2,
+            "ys": 7,
+            "len": 0,
+            "xlen": 6,
+            "ylen": 1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    2,
+                    5,
+                    2,
+                    5,
+                    2,
+                    5
+                ]
+            ],
+            "color": [
+                5,
+                2
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 3,
+            "ys": 4,
+            "len": 0,
+            "xlen": 5,
+            "ylen": 1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    6,
+                    5,
+                    6,
+                    5,
+                    6
+                ]
+            ],
+            "color": [
+                5,
+                6
+            ]
+        }
+    ],
+    [
+        {
+            "type": "cheat",
+            "xs": 2,
+            "ys": 8,
+            "len": 0,
+            "xlen": 10,
+            "ylen": 1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    2,
+                    5,
+                    2,
+                    5,
+                    2,
+                    5,
+                    2,
+                    5,
+                    2,
+                    5
+                ]
+            ],
+            "color": [
+                5,
+                2
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 1,
+            "ys": 5,
+            "len": 0,
+            "xlen": 11,
+            "ylen": 1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    3,
+                    5,
+                    3,
+                    5,
+                    3,
+                    5,
+                    3,
+                    5,
+                    3,
+                    5,
+                    3
+                ]
+            ],
+            "color": [
+                5,
+                3
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 6,
+            "ys": 4,
+            "len": 0,
+            "xlen": 6,
+            "ylen": 1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    6,
+                    5,
+                    6,
+                    5,
+                    6,
+                    5
+                ]
+            ],
+            "color": [
+                5,
+                6
+            ]
+        }
+    ],
+    [
+        {
+            "type": "cheat",
+            "xs": 3,
+            "ys": 3,
+            "len": 0,
+            "xlen": 5,
+            "ylen": 1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    8,
+                    5,
+                    8,
+                    5,
+                    8
+                ]
+            ],
+            "color": [
+                5,
+                8
+            ]
+        }
+    ]
+]

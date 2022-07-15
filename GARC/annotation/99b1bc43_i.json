@@ -1,0 +1,378 @@
+[
+    [
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 5,
+            "len": 0,
+            "xlen": 4,
+            "ylen": 4,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    1,
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    0,
+                    1,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    1
+                ]
+            ],
+            "color": [
+                1
+            ]
+        },
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 4,
+            "len": 4,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                4
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 4,
+            "ylen": 4,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    2,
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    2
+                ],
+                [
+                    2,
+                    0,
+                    0,
+                    2
+                ],
+                [
+                    2,
+                    2,
+                    2,
+                    0
+                ]
+            ],
+            "color": [
+                2
+            ]
+        }
+    ],
+    [
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 5,
+            "len": 0,
+            "xlen": 4,
+            "ylen": 4,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    1,
+                    1,
+                    0,
+                    0
+                ],
+                [
+                    1,
+                    0,
+                    1,
+                    0
+                ],
+                [
+                    1,
+                    1,
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1,
+                    1,
+                    0
+                ]
+            ],
+            "color": [
+                1
+            ]
+        },
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 4,
+            "len": 4,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                4
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 4,
+            "ylen": 4,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    2,
+                    2,
+                    2
+                ],
+                [
+                    2,
+                    0,
+                    2,
+                    0
+                ],
+                [
+                    2,
+                    2,
+                    2,
+                    2
+                ],
+                [
+                    2,
+                    2,
+                    2,
+                    2
+                ]
+            ],
+            "color": [
+                2
+            ]
+        }
+    ],
+    [
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 5,
+            "len": 0,
+            "xlen": 4,
+            "ylen": 4,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    1,
+                    0,
+                    0
+                ],
+                [
+                    1,
+                    0,
+                    1,
+                    1
+                ],
+                [
+                    1,
+                    1,
+                    1,
+                    0
+                ],
+                [
+                    1,
+                    1,
+                    1,
+                    0
+                ]
+            ],
+            "color": [
+                1
+            ]
+        },
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 4,
+            "len": 4,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                4
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 4,
+            "ylen": 4,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    2,
+                    0,
+                    2
+                ],
+                [
+                    2,
+                    2,
+                    0,
+                    2
+                ],
+                [
+                    0,
+                    2,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                2
+            ]
+        }
+    ],
+    [
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 5,
+            "len": 0,
+            "xlen": 4,
+            "ylen": 4,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    1,
+                    0,
+                    1,
+                    1
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    1,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    1,
+                    1
+                ]
+            ],
+            "color": [
+                1
+            ]
+        },
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 4,
+            "len": 4,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                4
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 4,
+            "ylen": 4,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    2,
+                    2,
+                    2
+                ],
+                [
+                    0,
+                    2,
+                    2,
+                    2
+                ],
+                [
+                    2,
+                    0,
+                    2,
+                    2
+                ],
+                [
+                    2,
+                    2,
+                    2,
+                    2
+                ]
+            ],
+            "color": [
+                2
+            ]
+        }
+    ]
+]

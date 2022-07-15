@@ -1,0 +1,120 @@
+[
+    [
+        {
+            "type": "diagonal_ul",
+            "xs": 9,
+            "ys": 0,
+            "len": 6,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                3
+            ]
+        },
+        {
+            "type": "rectangle",
+            "xs": 2,
+            "ys": 6,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                3
+            ]
+        }
+    ],
+    [
+        {
+            "type": "rectangle",
+            "xs": 4,
+            "ys": 6,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                4
+            ]
+        },
+        {
+            "type": "diagonal_ul",
+            "xs": 9,
+            "ys": 2,
+            "len": 4,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                4
+            ]
+        },
+        {
+            "type": "diagonal_ur",
+            "xs": 6,
+            "ys": 8,
+            "len": 2,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                4
+            ]
+        }
+    ],
+    [
+        {
+            "type": "rectangle",
+            "xs": 4,
+            "ys": 5,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                7
+            ]
+        },
+        {
+            "type": "diagonal_ur",
+            "xs": 6,
+            "ys": 7,
+            "len": 3,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                7
+            ]
+        },
+        {
+            "type": "diagonal_ur",
+            "xs": 0,
+            "ys": 1,
+            "len": 4,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                7
+            ]
+        }
+    ]
+]

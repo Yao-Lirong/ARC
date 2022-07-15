@@ -1,0 +1,162 @@
+[
+    [
+        {
+            "type": "parallel",
+            "xs": 1,
+            "ys": 6,
+            "len": 6,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "vertical",
+            "xs": 6,
+            "ys": 0,
+            "len": 7,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "dot",
+            "xs": 4,
+            "ys": 2,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        }
+    ],
+    [
+        {
+            "type": "vertical",
+            "xs": 2,
+            "ys": 1,
+            "len": 6,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "parallel",
+            "xs": 5,
+            "ys": 3,
+            "len": 5,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "dot",
+            "xs": 7,
+            "ys": 8,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        }
+    ],
+    [
+        {
+            "type": "vertical",
+            "xs": 1,
+            "ys": 5,
+            "len": 4,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "parallel",
+            "xs": 1,
+            "ys": 8,
+            "len": 5,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "vertical",
+            "xs": 5,
+            "ys": 2,
+            "len": 7,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "parallel",
+            "xs": 5,
+            "ys": 2,
+            "len": 5,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "dot",
+            "xs": 2,
+            "ys": 0,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        }
+    ]
+]

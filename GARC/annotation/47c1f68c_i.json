@@ -1,0 +1,211 @@
+[
+    [
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 6,
+            "len": 0,
+            "xlen": 5,
+            "ylen": 5,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    1,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    1,
+                    1,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    1,
+                    1,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                1
+            ]
+        },
+        {
+            "type": "vertical",
+            "xs": 5,
+            "ys": 0,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                2
+            ]
+        },
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 5,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                2
+            ]
+        }
+    ],
+    [
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 5,
+            "len": 0,
+            "xlen": 4,
+            "ylen": 4,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    3,
+                    0,
+                    3,
+                    0
+                ],
+                [
+                    3,
+                    3,
+                    0,
+                    0
+                ],
+                [
+                    3,
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                3
+            ]
+        },
+        {
+            "type": "vertical",
+            "xs": 4,
+            "ys": 0,
+            "len": 9,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 4,
+            "len": 9,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        }
+    ],
+    [
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 3,
+            "len": 7,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                4
+            ]
+        },
+        {
+            "type": "vertical",
+            "xs": 3,
+            "ys": 0,
+            "len": 7,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                4
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    2,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    2,
+                    2
+                ],
+                [
+                    0,
+                    2,
+                    0
+                ]
+            ],
+            "color": [
+                2
+            ]
+        }
+    ]
+]
