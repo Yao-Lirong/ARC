@@ -105,7 +105,7 @@ def diagonal_line_upperleft(xlen, ylen, x, y, l, c):
 def hash_canvas(canvas):
 	return hash(tuple(map(tuple, canvas)))
 
-def dirchilet_multinom_cost(counts, alpha = 1):
+def dirichlet_multinom_cost(counts, alpha = 1):
 	n = sum(counts)
 	K = len(counts)
 	res = loggamma(K * alpha) + loggamma(n+1) - loggamma(n + K*alpha)
@@ -183,7 +183,7 @@ class Astar():
 			# print("Bitmap Factor is " + str(factor) +"\n")
 
 			"不对，应该取最小的 rec line dot 而不是最大的面积，最小的面积才能有最小的dirichlet score，才能算出最大的 factor"
-			dot_bitmap = dirchilet_multinom_cost([1, 0], self.alpha) + np.log(target_colors_num)
+			dot_bitmap = dirichlet_multinom_cost([1, 0], self.alpha) + np.log(target_colors_num)
 			factor = rec_cost / dot_bitmap
 			print("Bitmap Factor is " + str(factor) +"\n")
 			return factor
@@ -198,6 +198,7 @@ class Astar():
 		# cheating_cost = area # user-defined all cover cost
 
 		""" 
+		TODO
 		Duplicate Code with Bitmap Cost Preprocessing
 		Need to Change Both sections when making changes
 		"""
@@ -206,7 +207,7 @@ class Astar():
 			xl = len(bitmap)
 			yl = len(bitmap[0])
 			colored_bits = np.sum(np.sum(bitmap))
-			cbitmap = dirchilet_multinom_cost([colored_bits, xl*yl - colored_bits], self.alpha) \
+			cbitmap = dirichlet_multinom_cost([colored_bits, xl*yl - colored_bits], self.alpha) \
 					+ baseline_cost + theta_bm_cost
 			return cbitmap
 
@@ -311,7 +312,7 @@ class Astar():
 							""" Duplicate Code with Bitmap Cost Preprocessing, 
 								need to Change Both sections when making changes
 								This section is kept for better performance. """
-							this_command_cost = dirchilet_multinom_cost([colored_bits, xl*yl - colored_bits], self.alpha) + baseline_cost + theta_bm_cost
+							this_command_cost = dirichlet_multinom_cost([colored_bits, xl*yl - colored_bits], self.alpha) + baseline_cost + theta_bm_cost
 							# this_command_cost = bitmap_factor * this_command_cost
 							
 							bitmaps.append(bitmap)
