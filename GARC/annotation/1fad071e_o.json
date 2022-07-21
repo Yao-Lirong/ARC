@@ -1,0 +1,50 @@
+[
+    [
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 0,
+            "len": 2,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                1
+            ]
+        }
+    ],
+    [
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 0,
+            "len": 4,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                1
+            ]
+        }
+    ],
+    [
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 0,
+            "len": 4,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                1
+            ]
+        }
+    ]
+]
