@@ -1,0 +1,66 @@
+[
+    [
+        {
+            "type": "dot",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                2
+            ]
+        }
+    ],
+    [
+        {
+            "type": "dot",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        }
+    ],
+    [
+        {
+            "type": "dot",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                1
+            ]
+        }
+    ],
+    [
+        {
+            "type": "dot",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        }
+    ]
+]

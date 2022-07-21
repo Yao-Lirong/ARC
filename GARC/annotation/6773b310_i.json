@@ -1,0 +1,1314 @@
+[
+    [
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 7,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 3,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "vertical",
+            "xs": 3,
+            "ys": 0,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "vertical",
+            "xs": 7,
+            "ys": 0,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 8,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    6,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    6
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    6,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    6
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 4,
+            "ys": 8,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 4,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    6
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 4,
+            "ys": 0,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    6,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 8,
+            "ys": 8,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    6
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 8,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    6,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 8,
+            "ys": 0,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        }
+    ],
+    [
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 7,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 3,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "vertical",
+            "xs": 3,
+            "ys": 0,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "vertical",
+            "xs": 7,
+            "ys": 0,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 8,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    6,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    6,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    6,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 4,
+            "ys": 8,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    6
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 4,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    6
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 4,
+            "ys": 0,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 8,
+            "ys": 8,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    6
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 8,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ],
+                [
+                    6,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 8,
+            "ys": 0,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    6
+                ]
+            ],
+            "color": [
+                6
+            ]
+        }
+    ],
+    [
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 7,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 3,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "vertical",
+            "xs": 3,
+            "ys": 0,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "vertical",
+            "xs": 7,
+            "ys": 0,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 8,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    6,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 4,
+            "ys": 8,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    6,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 4,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 4,
+            "ys": 0,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    6,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 8,
+            "ys": 8,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    6
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 8,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 8,
+            "ys": 0,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    6,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    6
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        }
+    ],
+    [
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 7,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "parallel",
+            "xs": 0,
+            "ys": 3,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "vertical",
+            "xs": 3,
+            "ys": 0,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "vertical",
+            "xs": 7,
+            "ys": 0,
+            "len": 11,
+            "xlen": -1,
+            "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 8,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    6
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    6,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 0,
+            "ys": 0,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    6
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 4,
+            "ys": 8,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 4,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    6,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    6
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 4,
+            "ys": 0,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 8,
+            "ys": 8,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    6
+                ],
+                [
+                    6,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 8,
+            "ys": 4,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    6,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 8,
+            "ys": 0,
+            "len": 0,
+            "xlen": 3,
+            "ylen": 3,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    6,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ],
+            "color": [
+                6
+            ]
+        }
+    ]
+]

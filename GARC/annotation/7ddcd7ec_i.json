@@ -1,0 +1,120 @@
+[
+    [
+        {
+            "type": "rectangle",
+            "xs": 2,
+            "ys": 6,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                3
+            ]
+        },
+        {
+            "type": "dot",
+            "xs": 4,
+            "ys": 5,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                3
+            ]
+        }
+    ],
+    [
+        {
+            "type": "rectangle",
+            "xs": 4,
+            "ys": 6,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                4
+            ]
+        },
+        {
+            "type": "dot",
+            "xs": 6,
+            "ys": 5,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                4
+            ]
+        },
+        {
+            "type": "dot",
+            "xs": 6,
+            "ys": 8,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                4
+            ]
+        }
+    ],
+    [
+        {
+            "type": "rectangle",
+            "xs": 4,
+            "ys": 5,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                7
+            ]
+        },
+        {
+            "type": "dot",
+            "xs": 3,
+            "ys": 4,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                7
+            ]
+        },
+        {
+            "type": "dot",
+            "xs": 6,
+            "ys": 7,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                7
+            ]
+        }
+    ]
+]

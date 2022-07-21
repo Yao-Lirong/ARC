@@ -2,7 +2,7 @@
     [
         {
             "type": "parallel",
-            "xs": 1,
+            "xs": 2,
             "ys": 12,
             "len": 3,
             "xlen": -1,
@@ -30,11 +30,25 @@
         },
         {
             "type": "diagonal_ul",
-            "xs": 3,
+            "xs": 4,
             "ys": 9,
             "len": 3,
             "xlen": -1,
             "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                6
+            ]
+        },
+        {
+            "type": "dot",
+            "xs": 6,
+            "ys": 9,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
             "layer": 1,
             "outbound": false,
             "bitmap": null,
@@ -45,8 +59,8 @@
         {
             "type": "diagonal_ul",
             "xs": 6,
-            "ys": 9,
-            "len": 3,
+            "ys": 10,
+            "len": 2,
             "xlen": -1,
             "ylen": -1,
             "layer": 1,
@@ -58,9 +72,9 @@
         },
         {
             "type": "parallel",
-            "xs": 2,
-            "ys": 6,
-            "len": 3,
+            "xs": 3,
+            "ys": 4,
+            "len": 4,
             "xlen": -1,
             "ylen": -1,
             "layer": 1,
@@ -73,8 +87,8 @@
         {
             "type": "parallel",
             "xs": 3,
-            "ys": 4,
-            "len": 3,
+            "ys": 2,
+            "len": 4,
             "xlen": -1,
             "ylen": -1,
             "layer": 1,
@@ -86,8 +100,8 @@
         },
         {
             "type": "diagonal_ul",
-            "xs": 2,
-            "ys": 5,
+            "xs": 3,
+            "ys": 3,
             "len": 1,
             "xlen": -1,
             "ylen": -1,
@@ -99,12 +113,12 @@
             ]
         },
         {
-            "type": "diagonal_ul",
-            "xs": 5,
-            "ys": 5,
-            "len": 1,
-            "xlen": -1,
-            "ylen": -1,
+            "type": "dot",
+            "xs": 6,
+            "ys": 3,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
             "layer": 1,
             "outbound": false,
             "bitmap": null,
@@ -116,7 +130,7 @@
     [
         {
             "type": "parallel",
-            "xs": 1,
+            "xs": 2,
             "ys": 6,
             "len": 5,
             "xlen": -1,
@@ -144,7 +158,7 @@
         },
         {
             "type": "diagonal_ul",
-            "xs": 3,
+            "xs": 4,
             "ys": 3,
             "len": 3,
             "xlen": -1,
@@ -159,10 +173,24 @@
         {
             "type": "diagonal_ul",
             "xs": 8,
-            "ys": 3,
-            "len": 3,
+            "ys": 4,
+            "len": 2,
             "xlen": -1,
             "ylen": -1,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": null,
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "dot",
+            "xs": 8,
+            "ys": 3,
+            "len": 0,
+            "xlen": 0,
+            "ylen": 0,
             "layer": 1,
             "outbound": false,
             "bitmap": null,

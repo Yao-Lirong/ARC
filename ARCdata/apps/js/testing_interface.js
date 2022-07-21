@@ -62,6 +62,11 @@ class LocalStorageService {
 
   convertValuesObj(object) {
       var obj = object;
+
+      if (obj['bitmap'] === '') {
+        obj['bitmap'] = null;
+      }
+
         for(var prop in obj){
             if(obj.hasOwnProperty(prop) && obj[prop] !== null && !isNaN(obj[prop]) && prop !== 'color'){
                 obj[prop] = +obj[prop];   
