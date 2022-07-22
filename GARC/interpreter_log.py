@@ -9,6 +9,8 @@ from API.canvas import *
 from API.color import *
 from obj_a_log import *
 from scipy.special import loggamma, logsumexp
+from itertools import chain, combinations
+from functools import reduce
 
 RUNTIME = 600.0
 WANTED_RESULTS_NUM = 5000
@@ -22,6 +24,8 @@ ENABLE_LEGACY = False
 arc_dir = "/home/ly373/ARC/" if SERVER \
 			   else os.path.join(os.getcwd(), "ARCdata\\data\\training\\")
 # RUNTIME = 5.0
+
+BM_DEBUG = True
 
 def array_to_canvas(arr):
 	"""
@@ -105,7 +109,7 @@ def diagonal_line_upperleft(xlen, ylen, x, y, l, c):
 def hash_canvas(canvas):
 	return hash(tuple(map(tuple, canvas)))
 
-def dirchilet_multinom_cost(counts, alpha = 1):
+def dirichlet_multinom_cost(counts, alpha = 1):
 	n = sum(counts)
 	K = len(counts)
 	res = loggamma(K * alpha) + loggamma(n+1) - loggamma(n + K*alpha)
@@ -151,7 +155,7 @@ class Astar():
 		sol["bitmap"] = list(filter(lambda o : o["type"] == "cheat", j))
 		return sol
 
-	def search_aux(self, target):
+	def search_aux(self, target, BACKGROUND_COLOR = Color.Black):
 		# q may store states with the same canvas but of different cost
 		# vis only records whether a state with that canvas is visited or not, 
 		# regardless of the cost that is to say, after visiting a canvas once, 
@@ -183,7 +187,7 @@ class Astar():
 			# print("Bitmap Factor is " + str(factor) +"\n")
 
 			"不对，应该取最小的 rec line dot 而不是最大的面积，最小的面积才能有最小的dirichlet score，才能算出最大的 factor"
-			dot_bitmap = dirchilet_multinom_cost([1, 0], self.alpha) + np.log(target_colors_num)
+			dot_bitmap = dirichlet_multinom_cost([1, 0], self.alpha) + np.log(target_colors_num)
 			factor = rec_cost / dot_bitmap
 			print("Bitmap Factor is " + str(factor) +"\n")
 			return factor
@@ -198,15 +202,24 @@ class Astar():
 		# cheating_cost = area # user-defined all cover cost
 
 		""" 
+		TODO
 		Duplicate Code with Bitmap Cost Preprocessing
 		Need to Change Both sections when making changes
 		"""
 		def bitmap_cost(bitmap):
-			bitmap = np.array(bitmap, dtype = bool)
-			xl = len(bitmap)
-			yl = len(bitmap[0])
-			colored_bits = np.sum(np.sum(bitmap))
-			cbitmap = dirchilet_multinom_cost([colored_bits, xl*yl - colored_bits], self.alpha) \
+			# bitmap = np.array(bitmap, dtype = bool)
+			# xl = len(bitmap)
+			# yl = len(bitmap[0])
+			# colored_bits = np.sum(np.sum(bitmap))
+			# color_count = list(map(lambda c : len(np.where)))
+			color_count = np.zeros(10)
+			for row in bitmap:
+				for pixel in row:
+					color_count[pixel] += 1
+			color_count[BACKGROUND_COLOR] += 1
+			colored_indexes = color_count.nonzero()
+			color_count[BACKGROUND_COLOR] -= 1
+			cbitmap = dirichlet_multinom_cost(color_count[colored_indexes], self.alpha) \
 					+ baseline_cost + theta_bm_cost
 			return cbitmap
 
@@ -287,34 +300,138 @@ class Astar():
 
 
 		""" Preprocess possible bitmaps to draw	"""
+		# color_count[x][y][xl'][yl'] is an array of length 10. 
+		# Each element records the number of appearance of the corresponding 
+		# color in the rectangle region starting at (x,y) with x-length xl'+1
+		# and y-length yl'+1 
+		# So it's the rectangle starting at (x,y) to (x+xl', y+yl')
+		color_count = [ [ [ [np.zeros(10) for _ in range(ylen-y)] for _ in range(xlen-x)] for y in range(ylen)] for x in range(xlen)]
+
+		# initialize points 
+		for x in range(xlen):
+			for y in range(ylen):
+				c = target[x][y]
+				color_count[x][y][0][0][c] += 1
+		# initialize bitmaps of height/width = 1 that start at 0
+		for xl in range(1, xlen):
+			color_count[0][0][xl][0] = color_count[0][0][xl-1][0] + color_count[0+xl][0][0][0]
+		for yl in range(1, ylen):
+			color_count[0][0][0][yl] = color_count[0][0][0][yl-1] + color_count[0][0+yl][0][0]
+
+		if BM_DEBUG: print([(x, y, color_count[x][y][0][0]) for x in range(xlen) for y in range(ylen)])
+
+		# initialize all rectangle bitmaps that start at (0,0)
+		for xl in range(1, xlen):
+			for yl in range(1, ylen):
+				color_count[0][0][xl][yl] = color_count[0][0][xl-1][yl] + color_count[0][0][xl][yl-1] \
+									- color_count[0][0][xl-1][yl-1] + color_count[0+xl][0+yl][0][0]
+				if BM_DEBUG: print((0, 0, xl, yl) , color_count[0][0][xl][yl])
+
+		a = 1
+
+		# initialize bitmap that starts at x=0 or y=0
+		for x in range(1, xlen):
+			for xl in range(xlen-x):
+				for yl in range(ylen):
+					if xl + yl == 0: continue
+					color_count[x][0][xl][yl] = color_count[0][0][x+xl][yl] - color_count[0][0][x-1][yl]
+					if BM_DEBUG: print((x, 0, xl, yl) , color_count[x][0][xl][yl])
+		for y in range(1, ylen):
+			for xl in range(xlen):
+				for yl in range(ylen-y):
+					if xl + yl == 0: continue
+					color_count[0][y][xl][yl] = color_count[0][0][xl][y+yl] - color_count[0][0][xl][y-1]
+					if BM_DEBUG: print((0, y, xl, yl) , color_count[0][y][xl][yl])
+
+		a = 2
+
+		# initialize all the other bitmaps (those start at x,y > 0)
+		for x in range(1, xlen):
+			for y in range(1, ylen): 
+				for xl in range(xlen - x):
+					for yl in range(ylen - y):
+						color_count[x][y][xl][yl] = color_count[0][0][x+xl][y+yl] + color_count[0][0][x-1][y-1] \
+											- color_count[0][0][x-1][y+yl] - color_count[0][0][x+xl][y-1]
+						if BM_DEBUG: print((x, y, x+xl, y+yl) , color_count[x][y][xl][yl])
+
+
+		a = 3
+
+		def powerset_without_empty_or_singleton(iterable):
+			"""
+			@Requires len(iterable) > 1
+			@Example powerset([1,2,3]) --> (1,2) (1,3) (2,3) (1,2,3)
+			"""
+			s = list(iterable)
+			return chain.from_iterable(combinations(s, r) for r in range(2, len(s)+1))
+
+		def bitmap_color_comb_with_bgcolor(c):
+			return list(filter(lambda lst : BACKGROUND_COLOR in lst,
+							powerset_without_empty_or_singleton(c)))
+
+		"""
+		好聪明的一个优化
+		"""
+		canvas_by_color = {}
+		for c in target_colors:
+			canvas_by_color[c] = np.where(target == np.array(c), True, False)
+
+		canvas_by_color_comb = {}
+		mask_by_color_comb = {}
+		for cc in bitmap_color_comb_with_bgcolor(target_colors):
+			cc = tuple(sorted(cc))
+			this_bitmap_mask = np.array(reduce(lambda acc, tc : canvas_by_color[tc] + acc, cc, np.array(np.zeros((xlen, ylen)), dtype = bool)))
+			this_bitmap = np.where(this_bitmap_mask, target, Color.Black)
+			mask_by_color_comb[cc] = this_bitmap_mask
+			canvas_by_color_comb[cc] = this_bitmap
+
 		bitmaps = []
 		bitmap_commands = []
 		bitmap_masks = []
 		bitmap_costs = []
 
-		for c in target_colors:
+		for x in range(xlen):
+			for y in range(ylen):
+				for xl in range(xlen - x):
+					for yl in range(ylen - y):
+						
+						color_count_with_bg = color_count[x][y][xl][yl]
+						color_count_with_bg[BACKGROUND_COLOR] += 1
+						cc = tuple(np.where(color_count_with_bg != 0)[0])
+						color_comb = bitmap_color_comb_with_bgcolor(cc)
+						
+						if BM_DEBUG: print("-----------\n", (x, y, x+xl, y+yl) , cc)
+						
+						
+						for c in color_comb:
 
-			bitmap_mask = np.where(target == np.array(c), True, False)
-			bitmap = np.where(target == np.array(c), c, Color.Black)
-			
-			for x in range(xlen):
-				for y in range(ylen):
-					for xl in range(1, xlen - x + 1):
-						for yl in range(1, ylen - y + 1):
+							assert BACKGROUND_COLOR in c
+
 							this_bitmap_mask = np.full((xlen, ylen), False)
-							this_command = obj("cheat", x, y, c, xlen = xl, ylen = yl)
+							this_command = obj("cheat", x, y, c, xlen = xl+1, ylen = yl+1)
 							
-							this_bitmap_mask[x:x+xl, y:y+yl] = bitmap_mask[x:x+xl, y:y+yl]
-							if np.sum(np.sum(this_bitmap_mask)) == 0: continue # if there is nothing to draw for this color in this region, we just skip this region
-							colored_bits = np.sum(np.sum(this_bitmap_mask))
+							this_bitmap_mask[x:x+xl+1, y:y+yl+1] = mask_by_color_comb[c][x:x+xl+1, y:y+yl+1]
+							
+							if np.sum(np.sum(this_bitmap_mask)) == 0: 
+								print("!!!")
+								print(c)
+								print((x, y, x+xl, y+yl) , color_count[x][y][xl][yl])
+								raise Exception("WHAT?")
 							
 							""" Duplicate Code with Bitmap Cost Preprocessing, 
 								need to Change Both sections when making changes
 								This section is kept for better performance. """
-							this_command_cost = dirchilet_multinom_cost([colored_bits, xl*yl - colored_bits], self.alpha) + baseline_cost + theta_bm_cost
-							# this_command_cost = bitmap_factor * this_command_cost
+							# TODO 根据怎么选颜色改，现在是任何 bitmap 都从 target_colors 里面选
+							# 要改 baseline_cost
+							this_color_count = color_count[x][y][xl][yl][(c,)]
+							this_command_cost = dirichlet_multinom_cost(np.pad(this_color_count, (0, len(target_colors) - len(this_color_count)), "constant"), self.alpha) \
+											  + baseline_cost + theta_bm_cost
 							
-							bitmaps.append(bitmap)
+							if BM_DEBUG:
+								print(this_command, this_command_cost)
+								display(this_bitmap_mask)
+
+							bitmaps.append(canvas_by_color_comb[c])
 							bitmap_masks.append(this_bitmap_mask)
 							bitmap_commands.append(this_command)
 							bitmap_costs.append(this_command_cost)
@@ -522,6 +639,8 @@ if __name__ == "__main__":
 	TASKNAME, TASKNUM, ISINPUT = "0a938d79", 0, True
 
 	TASKNAME, TASKNUM, ISINPUT = "025d127b", 0, True
+
+	TASKNAME, TASKNUM, ISINPUT = "f9012d9b", 0, True
 	
 	alpha, theta = 0.0009118819655545162, [14.0, 15.0, 15.0, 11.0]
 	theta = list(np.multiply(-1, theta))
