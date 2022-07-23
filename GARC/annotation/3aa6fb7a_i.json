@@ -1,0 +1,121 @@
+[
+    [
+        {
+            "type": "cheat",
+            "xs": 1,
+            "ys": 4,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    8,
+                    0
+                ],
+                [
+                    8,
+                    8
+                ]
+            ],
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 4,
+            "ys": 2,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    8,
+                    8
+                ],
+                [
+                    0,
+                    8
+                ]
+            ],
+            "color": [
+                8
+            ]
+        }
+    ],
+    [
+        {
+            "type": "cheat",
+            "xs": 2,
+            "ys": 3,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    8,
+                    0
+                ],
+                [
+                    8,
+                    8
+                ]
+            ],
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 3,
+            "ys": 0,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    0,
+                    8
+                ],
+                [
+                    8,
+                    8
+                ]
+            ],
+            "color": [
+                8
+            ]
+        },
+        {
+            "type": "cheat",
+            "xs": 4,
+            "ys": 5,
+            "len": 0,
+            "xlen": 2,
+            "ylen": 2,
+            "layer": 1,
+            "outbound": false,
+            "bitmap": [
+                [
+                    8,
+                    8
+                ],
+                [
+                    0,
+                    8
+                ]
+            ],
+            "color": [
+                8
+            ]
+        }
+    ]
+]
