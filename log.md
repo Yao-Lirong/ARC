@@ -361,3 +361,19 @@ A few examples discussed:
 We don't want to use cost as a hash to check the correctness of the program. At some point, we need to change this. We previously used cost to check correctness of the prediction because it gives some sort of a hash. Two solutions have the same cost regardless of the order in which objects were drawn. In this way, we don't have to care about if our ground-truth solutions have a different drawing order than the predicted result. 
 
 Another way to do this is to give a hash to each mask, each solution can be just considered as a mask. When we want to check whether two solutions are the same, we just have to check the hash of the list of these masks. 
+
+### 2022-07-22
+
+When we use dirichlet distribution on multichromatic bitmap, there isn't a cost associated with "choosing which color to use in the bitmap". `bitmap_cost(canvas) = log(area^2) + dirichlet(counts, alpha)` ~~+log(C)~~ 
+
+If we find dirichlet distribution is too powerful and makes the use of bitmap extensive, we can fall back to the previous probability where we assume each color pixel is just chosen uniformly randomly. `bitmap_cost(canvas) = log(area^2) + log(C^wh)` where wh is the length and width of the bitmap. In fact, **if the alpha goes to infinity, these two distribution approach the same.** 
+
+Another hyperparameter we can tune is the heuristics. We can assign a weight to the heuristics and use this weight to scale it. e.g. make the heuristic 5 times stronger, or 1/3 times weaker
+
+We can also use our labeled training data to fit the hyperparameters, so $\alpha$ is an argument that minimizes the sum of cost of all bitmaps. $\theta$ is the proportion of each kind of object appeared in the dataset. 
+
+Also for now we are not sure whether we should stick to multichromatic bitmaps or switch back to monochromatic bitmaps. We'll see as we do most tests. 
+
+The program interprets `7ddcd7ec` input 3 as two diagonal lines (one going upper left and the other going upper right). So a good question to ask is: why do we humans interpret this as a square at the center and two diagonal lines? We used context for sure. The 1st input shows clearly this problem involves a square, but in addition to that, there isn't a strong incentive for us to call it two diagonal lines in the first place. That might be because these two crossed "diagonal lines" have the same color and it's hard for us to tear them apart. If it is indeed the case that among all the problems we saw, humans only interpret such an image as two diagonal lines when they have different color, we can define this as a rule/cue and hardcode it into our search program. 
+
+我的一些想法：因为 labeled data 是看全部data得出的，而 interpreter 只是看单独的每一个 canvas，所以预测结果必定不好，我们如果引入 union 所有预测结果的功能，就能做到对于一个问题 training data 的 extrapolate。再进一步，等之后有了solver，如果 test 和 training 不一致，solver 可以选择在 形状，个数，颜色 三者中 extrapolate (改变) 一个，并保持其余不变
